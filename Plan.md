@@ -7,9 +7,9 @@
   TODO after finishing main things:
   - add some effects for header items
   - implement mobile header menu
-- Implement the section under header
-- Investigate the api
++ Implement the section under header
++ Investigate the api
 - Implement the search field
-- Implement footer
 - Implement the single joke page
 - Implement the landing page
+- Implement footer
