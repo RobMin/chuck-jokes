@@ -1,4 +1,10 @@
 import axios from "axios";
+import { Joke } from "../routes/JokesPage";
+
+export interface JokeSearchData {
+  result: Array<Joke>;
+  total: number;
+}
 
 const useChuckApi = () => {
   const getCategories = async () =>
@@ -13,7 +19,7 @@ const useChuckApi = () => {
       params: {
         query: search
       }
-    }).then(res => res.data);
+    }).then(res => res.data as JokeSearchData);
   };
 
   return {

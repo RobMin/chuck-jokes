@@ -1,0 +1,26 @@
+@import "../../scss/breakpoints.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/constants.scss";
+
+.SingleJokeSection {
+  width: $desktop;
+  margin: 0 auto;
+  @media #{ $desktop-down } {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+  }
+
+  &-back-button {
+    @include flex-center;
+    justify-content: center;
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 62px;
+    height: 62px;
+    cursor: pointer;
+    margin: 46px 0 48px;
+  }
+}

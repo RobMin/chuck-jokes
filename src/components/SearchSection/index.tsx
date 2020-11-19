@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/search_section_image.jpg';
 import searchIcon from '../../assets/icons/search_icon.svg';
 import './styles.scss';
-import useChuckApi from '../../hooks/useChuckApi';
-import { Joke } from '../../routes/JokesPage';
+import useChuckApi, { JokeSearchData } from '../../hooks/useChuckApi';
 
 interface SearchSectionProps {
-  categorizeJokes: (jokes: Array<Joke>) => any;
+  categorizeJokes: (res: JokeSearchData) => any;
   setError: (err: string) => void;
 }
 
@@ -17,8 +16,8 @@ const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
   const search = async (e: any) => {
     e.preventDefault();
     try {
-      const { result } = await searchJokes(input);
-      categorizeJokes(result);
+      const res = await searchJokes(input);
+      categorizeJokes(res);
     } catch(e) {
       setError(e.message);
     }

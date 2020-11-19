@@ -1,0 +1,97 @@
+@import "../../scss/breakpoints.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/constants.scss";
+
+// TODO add unique colours
+.Category {
+  &-tag {
+    @include font(12px, 600);
+    position: relative;
+    padding: 5px 10px;
+    padding-left: 20px;
+    border-radius: 15px;
+    width: fit-content;
+    &-dot {
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      position: absolute;
+      background-color: $white;
+      width: 4px;
+      height: 4px;
+      border-radius: 100%;
+    }
+  }
+
+
+  &-animal {
+    background-color: #57e690;
+    color: $white;
+  }
+  &-career {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-celebrity {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-dev {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-explicit {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-fashion {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-food {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-history {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-money {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-movie {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-music {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-political {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-religion {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-science {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-sport {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-travel {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+  &-uncategorized {
+    background-color: #ff5b5b;
+    color: $white;
+  }
+}
+

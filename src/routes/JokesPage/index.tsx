@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { Category } from '../../components/Category/Tag';
 import SearchSection from '../../components/SearchSection';
+import SingleJokeSection from '../../components/SingleJokeSection';
+import { JokeSearchData } from '../../hooks/useChuckApi';
 // import './styles.scss';
 
 export interface Joke {
@@ -7,14 +10,14 @@ export interface Joke {
   id: string;
   url: string;
   value: string;
-  categories?: Array<string>;
+  categories?: Array<Category>;
 }
 
 interface CategorizedJokes {
   [ category: string ]: Array<Joke>;
 }
 
-const addTo = (obj: CategorizedJokes, joke: Joke, category = 'uncategorized') => {
+const addTo = (obj: CategorizedJokes, joke: Joke, category: string) => {
   if (!obj[category]) {
     return obj[category] = [ joke ];
   }
@@ -23,25 +26,29 @@ const addTo = (obj: CategorizedJokes, joke: Joke, category = 'uncategorized') =>
 
 const addToCategories = (obj: CategorizedJokes, joke: Joke) => {
   if (!joke?.categories?.length) {
-    addTo(obj, joke);
-    return obj;
+    joke.categories = [ 'uncategorized' ];
   }
   joke.categories.forEach((category) => addTo(obj, joke, category));
   return obj;
 };
 
 const JokesPage = () => {
-  const [ active, setActive ] = useState<Joke>();
+  const [ active, setActive ] = useState<Joke | null>(null);
   const [ jokes, setJokes ] = useState<CategorizedJokes>();
+  const [ jokesCount, setJokesCount ] = useState(0);
   const [ error, setError ] = useState<string>();
 
-  const categorizeJokes = (jokes: Array<Joke>) => {
-    const categorizedJokes = jokes.reduce(addToCategories, {});
+  const categorizeJokes = ({ result, total }: JokeSearchData) => {
+    const categorizedJokes = result.reduce(addToCategories, {});
     setJokes(categorizedJokes);
+    if (total === 1) {
+      setActive(result[0]);
+    }
   };
 
   return (<>
     <SearchSection categorizeJokes={ categorizeJokes } setError={ setError } />
+    { active && <SingleJokeSection exitSingleJokeSection={ () => setActive(null) } joke={ active } /> }
   </>);
 };
 

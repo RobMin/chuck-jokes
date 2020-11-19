@@ -1,0 +1,23 @@
+@import "../../scss/breakpoints.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/constants.scss";
+
+.SingleJokeCard {
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $dark-white;
+  border-radius: 4px;
+  padding: 18px;
+
+  &-title {
+    @include font(40px, 600);
+    color: $secondary;
+    margin: 10px 0;
+  }
+
+  &-joke {
+    @include font(15px, normal);
+    color: $text-regular;
+    line-height: 1.47;
+  }
+}
