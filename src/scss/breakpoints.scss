@@ -1,0 +1,5 @@
+$mobile: 320px;
+$desktop: 1110px;
+
+$desktop-up: "(min-width: #{ $desktop })";
+$desktop-down: "(max-width: #{ $desktop })";
