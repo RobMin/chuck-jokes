@@ -1,0 +1,81 @@
+@import "../../scss/breakpoints.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/constants.scss";
+
+.SearchSection {
+  @include flex-center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 320px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  @media #{ $desktop-down } {
+    height: 240px;
+  }
+
+  &-title {
+    @include font(48px, normal);
+    margin-top: 40px;
+    margin-bottom: 0px;
+    line-height: 1.5;
+    color: $secondary;
+    @media #{ $desktop-down } {
+      @include font(36px, normal);
+    }
+  }
+
+  &-subtitle {
+    @include font(22px, 600);
+    line-height: 1.45;
+    color: $white;
+    margin: 0;
+    @media #{ $desktop-down } {
+      @include font(16px, normal);
+    }
+  }
+
+  &-search {
+    @include font(16px, normal);
+    border: none;
+    outline: none;
+    width: calc(100% - 48px);
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: transparent;
+    color: white;
+    @media #{ $desktop-down } {
+      @include font(14px, normal);
+    }
+    &::placeholder {
+      @include font(16px, normal);
+      color: $grey;
+      @media #{ $desktop-down } {
+        @include font(14px, normal);
+      }
+    }
+
+    &-wrapper {
+      @include flex-stretch;
+      margin: 45px 0;
+      width: 458px;
+      height: 48px;
+      border: 1px solid white;
+      border-radius: 4px;
+      @media #{ $desktop-down } {
+        width: 100%;
+      }
+    }
+
+    &-icon {
+      &-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+      }
+    }
+  }
+}

@@ -16,3 +16,12 @@
   display: flex;
   align-items: center;
 }
+
+@mixin font($size, $weight) {
+  font-family: Montserrat;
+  font-size: $size;
+  font-weight: $weight;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
