@@ -51,6 +51,9 @@
 
     &-mobile {
       @include flex-center;
+      @media #{ $desktop-up } {
+        display: none;
+      }
     }
   }
 
