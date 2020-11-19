@@ -1,12 +1,18 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
-import SearchSection from '../components/SearchSection';
+import JokesPage from '../routes/JokesPage';
 import './styles.scss';
 
 const App = () => {
   return (<>
     <Header/>
-    <SearchSection/>
+    <Router>
+      <Switch>
+        <Route path="/jokes/:id?" component={ JokesPage } />
+        <Redirect to="/jokes" />
+      </Switch>
+    </Router>
   </>);
 };
 

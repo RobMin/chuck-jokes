@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import backgroundImage from '../../assets/search_section_image.jpg';
 import searchIcon from '../../assets/icons/search_icon.svg';
 import './styles.scss';
+import useChuckApi from '../../hooks/useChuckApi';
+import { Joke } from '../../routes/JokesPage';
 
-const SearchSection = () => {
+interface SearchSectionProps {
+  categorizeJokes: (jokes: Array<Joke>) => any;
+  setError: (err: string) => void;
+}
+
+const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
   const [ input, setInput ] = useState('');
-  const search = (e: any) => {
+  const { searchJokes } = useChuckApi();
+
+  const search = async (e: any) => {
     e.preventDefault();
-    // TODO: add api logic
+    try {
+      const { result } = await searchJokes(input);
+      categorizeJokes(result);
+    } catch(e) {
+      setError(e.message);
+    }
   };
 
   return (

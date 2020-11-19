@@ -9,7 +9,7 @@
   - implement mobile header menu
 + Implement the section under header
 + Investigate the api
-- Implement the search field
++ Implement the search field
 - Implement the single joke page
 - Implement the landing page
 - Implement footer
