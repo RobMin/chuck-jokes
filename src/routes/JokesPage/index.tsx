@@ -7,6 +7,7 @@ import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
 import './styles.scss';
 import JokesSection from './JokesSection';
+import { knownCategories } from '../../constants';
 
 export interface Joke {
   icon_url: string;
@@ -23,6 +24,7 @@ export interface CategorizedJokes {
 const JokesPage = () => {
   const [ active, setActive ] = useState<Joke | null>(null);
   const [ categorizedJokes, setCategorizedJokes ] = useState<CategorizedJokes>({});
+  const [ availableCategories, setAvailableCategories ] = useState(Object.keys(knownCategories) as Array<Category>);
   const [ activeCategory, setActiveCategory ] = useState<Category>('dev');
   const [ error, setError ] = useState<string>();
 
@@ -34,6 +36,7 @@ const JokesPage = () => {
         const { result, total } = await searchJokes(query || 'all');
         const categorizedJokes = result.reduce(addToCategories, {});
         setCategorizedJokes(categorizedJokes);
+        setAvailableCategories(Object.keys(categorizedJokes) as Array<Category>);
         setActive(total === 1 ? result[0] : null);
       } catch(e) {
         setError(e.message);
@@ -52,7 +55,6 @@ const JokesPage = () => {
   }, [ setActiveCategory, activeCategory, categorizedJokes ]);
 
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
-  const availableCategories = Object.keys(categorizedJokes) as Array<Category>;
   return (<>
     <SearchSection query={ query } setQuery={ setQuery } />
     { active &&

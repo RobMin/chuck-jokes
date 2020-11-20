@@ -22,8 +22,8 @@ const CategoriesSection = ({ categories, onCategoryChange }: CategoriesSectionPr
         <CategoryButton key={ i } onClick={ () => onCategoryChange(cat) } category={ cat as Category } />
       )) }
       { categories.length > 7 && !showAll && (
-        <button className="CategoriesSection-show-all-button">
-          <span className="CategoriesSection-show-all-button-arrow-placeholder" />
+        <button className="CategoriesSection-show-all-button" onClick={ () => setShowAll(true) }>
+          <span className="CategoriesSection-show-all-button-placeholder" />
           <span className="CategoriesSection-show-all-button-text">View all</span>
           <img src={ arrowDown } alt="arrow down" className="CategoriesSection-show-all-button-arrow" />
         </button>

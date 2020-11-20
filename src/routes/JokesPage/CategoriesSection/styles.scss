@@ -28,14 +28,8 @@
       text-transform: uppercase;
     }
 
-    &-arrow {
-      $width: 11px;
-
-      width: $width;
-
-      &-placeholder {
-        width: $width;
-      }
+    &-arrow, &-placeholder {
+      width: 11px;
     }
   }
 }

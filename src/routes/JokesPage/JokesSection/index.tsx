@@ -9,7 +9,6 @@ interface JokeCardProps {
 }
 
 const JokesSection = ({ jokes, setActive }: JokeCardProps) => {
-  console.log(jokes);
   return (
     <div className="JokesSection">
       { jokes.map(joke =>
