@@ -1,29 +1,29 @@
 import axios from "axios";
+import { useCallback } from "react";
 import { Joke } from "../routes/JokesPage";
 
-export interface JokeSearchData {
+export interface JokesResData {
   result: Array<Joke>;
   total: number;
 }
 
+const apiUrl = 'https://api.chucknorris.io/jokes';
 const useChuckApi = () => {
-  const getCategories = async () =>
-    axios.get('https://api.chucknorris.io/jokes/categories').then(res => res.data);
+  const getCategories = useCallback(async () =>
+    axios.get(`${ apiUrl }/categories`).then(res => res.data)
+  , []);
 
-  const searchJokes = async (search: string) => {
-    if (search.length < 3) {
-      return { total: 0, result: [] }; // otherwise the API will throw an error
-    }
-
-    return axios.get('https://api.chucknorris.io/jokes/search', {
+  const searchJokes = useCallback(async (search: string = 'all') =>
+    axios.get(`${ apiUrl }/search`, {
       params: {
-        query: search
+        query: search.length < 3 ? 'all' : search
       }
-    }).then(res => res.data as JokeSearchData);
-  };
+    }).then(res => res.data as JokesResData)
+  , []);
 
   return {
     getCategories,
+    getAllJokes: searchJokes,
     searchJokes
   };
 };

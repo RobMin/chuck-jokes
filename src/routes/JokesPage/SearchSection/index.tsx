@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import backgroundImage from '../../assets/search_section_image.jpg';
-import searchIcon from '../../assets/icons/search_icon.svg';
+import React, { useEffect, useRef, useState } from 'react';
+import backgroundImage from '../../../assets/search_section_image.jpg';
+import searchIcon from '../../../assets/icons/search_icon.svg';
+import useChuckApi, { JokesResData } from '../../../hooks/useChuckApi';
 import './styles.scss';
-import useChuckApi, { JokeSearchData } from '../../hooks/useChuckApi';
 
 interface SearchSectionProps {
-  categorizeJokes: (res: JokeSearchData) => any;
+  categorizeJokes: (res: JokesResData) => any;
   setError: (err: string) => void;
 }
 
@@ -13,7 +13,13 @@ const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
   const [ input, setInput ] = useState('');
   const { searchJokes } = useChuckApi();
 
+  const initialRender = useRef(true);
   useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+
     const search = async () => {
       try {
         const res = await searchJokes(input);
@@ -25,7 +31,7 @@ const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
 
     const timeoutId = setTimeout(search, 1000);
     return () => clearTimeout(timeoutId);
-  }, [input])
+  }, [ input, setError, searchJokes, categorizeJokes ])
 
   return (
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">

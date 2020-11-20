@@ -47,7 +47,7 @@ const TopJokes = () => {
         The top 10 jokes this week
       </h6>
         { topJokes.map(({ title, href }, i) => (
-          <a key={ i } href={ href } target="_blank" rel="noopener" className="TopJokesCard-item">{ title }</a>
+          <a key={ i } href={ href } target="_blank" rel="noreferrer noopener" className="TopJokesCard-item">{ title }</a>
         ) ) }
     </div>
   );
