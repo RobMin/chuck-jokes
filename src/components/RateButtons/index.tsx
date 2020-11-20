@@ -1,6 +1,5 @@
 import React from 'react';
 import likeImg from 'assets/icons/like.svg';
-// import dislikeImg from 'assets/icons/dislike.svg';
 import './styles.scss';
 
 type RateType = 'like' | 'dislike';
