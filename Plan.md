@@ -12,6 +12,6 @@
 + Implement the search field
 + Implement the single joke page
   TODO after improving logic
-  - implement like/dislike feature
-- Implement the landing page
+  + implement like/dislike feature
++ Implement the landing page
 - Implement footer

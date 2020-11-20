@@ -1,0 +1,49 @@
+@import "scss/breakpoints.scss";
+@import "scss/mixins.scss";
+@import "scss/constants.scss";
+
+.RateButtons {
+  display: flex;
+}
+
+.RateButton {
+  @include flex-center;
+  flex-direction: column;
+  margin: 0 16px;
+
+  &-count {
+    @include font(12px, 600);
+    padding: 5px;
+    color: inherit;
+  }
+
+  // &:first-child {
+  //   margin-right: 30px;
+  // }
+
+  &-icon-wrapper {
+    @include flex-center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    padding-bottom: 2px;
+  }
+
+  &-like {
+    $like: #68b680;
+    color: $like;
+    .RateButton-icon-wrapper {
+      background-color: $like;
+    }
+  }
+
+  &-dislike {
+    $dislike: #ff3750;
+    color: $dislike;
+    .RateButton-icon-wrapper {
+      background-color: $dislike;
+      transform: rotate(-180deg);
+    }
+  }
+}

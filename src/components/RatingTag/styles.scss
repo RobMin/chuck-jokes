@@ -1,0 +1,15 @@
+@import "scss/breakpoints.scss";
+@import "scss/mixins.scss";
+@import "scss/constants.scss";
+
+.RatingTag {
+  @include font(14px, 600);
+  line-height: 1.71;
+  position: relative;
+  padding: 0 10px 0 20px;
+
+  &-dot {
+    @include bullet;
+  }
+}
+

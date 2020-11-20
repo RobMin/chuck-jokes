@@ -7,6 +7,11 @@
   width: 100%;
   overflow: auto;
 
+  &-head {
+    @include flex-center;
+    justify-content: space-between;
+  }
+
   &-title {
     @include font(40px, 600);
     color: $secondary;

@@ -3,6 +3,7 @@ import { Joke } from '..';
 import CategoryTag from 'components/Category/Tag';
 import { Category } from 'components/Category/index.d';
 import { knownCategories } from '../../../constants';
+import RatingTag from 'components/RatingTag';
 import './styles.scss';
 
 interface SingleJokeSectionProps {
@@ -16,6 +17,7 @@ const SingleJokeCard = ({ joke }: SingleJokeSectionProps) => {
         { joke.categories && joke.categories.map((cat, i) => (
           <CategoryTag key={ i } withDot category={ cat as Category } />
         )) }
+        <RatingTag likes={ joke.likes } dislikes={ joke.dislikes } />
       </div>
         { joke.categories && (
           <h5 className="SingleJokeCard-title">{ knownCategories[joke.categories[0]] }</h5>

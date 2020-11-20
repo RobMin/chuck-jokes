@@ -6,6 +6,7 @@ import buttonCurve from 'assets/button_curve.png';
 import arrowLeft from 'assets/icons/arrow_left_secondary.svg';
 import arrowRight from 'assets/icons/arrow_right_secondary.svg';
 import SingleJokeCard from '../SingleJokeCard';
+import RateButtons from 'components/RateButtons';
 import './styles.scss';
 
 interface SingleJokeSectionProps {
@@ -29,6 +30,7 @@ const SingleJokeSection = ({ joke, exitSingleJokeSection, nextJoke, prevJoke }: 
         <SingleJokeCard joke={ joke } />
         <div className="SingleJokeSection-joke-buttons-wrapper">
           <div className="SingleJokeSection-react-buttons">
+            <RateButtons likes={ joke.likes } dislikes={ joke.dislikes } />
           </div>
           <div className="SingleJokeSection-nav-buttons">
             { prevJoke && <Button onClick={ prevJoke } icon={ arrowLeft } iconPosition="left">Prev. joke</Button> }

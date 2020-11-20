@@ -10,10 +10,10 @@ interface CategoryTagProps {
 
 const CategoryTag = ({ category, withDot }: CategoryTagProps) => {
   return (
-    <div className={ `Category-tag Category-${ category }` }>
+    <span className={ `Category-tag Category-${ category }` }>
       { withDot && <span className="Category-tag-dot" /> }
       { knownCategories[category] }s
-    </div>
+    </span>
   );
 };
 

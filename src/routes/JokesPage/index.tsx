@@ -3,7 +3,7 @@ import CategoryTag from 'components/Category/Tag';
 import { Category } from 'components/Category/index.d';
 import useChuckApi from 'hooks/useChuckApi';
 import CategoriesSection from './CategoriesSection';
-import { addToCategories } from './helpers';
+import { addToCategories, getRandomKey } from './helpers';
 import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
 import './styles.scss';
@@ -24,11 +24,12 @@ export interface CategorizedJokes {
   [ category: string ]: Array<Joke>;
 }
 
+const knownCategoriesArr = Object.keys(knownCategories) as Array<Category>;
 const JokesPage = () => {
   const [ activeIdx, setActiveIdx ] = useState(-1);
   const [ categorizedJokes, setCategorizedJokes ] = useState<CategorizedJokes>({});
-  const [ availableCategories, setAvailableCategories ] = useState(Object.keys(knownCategories) as Array<Category>);
-  const [ activeCategory, setActiveCategory ] = useState<Category>('dev');
+  const [ availableCategories, setAvailableCategories ] = useState(knownCategoriesArr);
+  const [ activeCategory, setActiveCategory ] = useState<Category>(getRandomKey(knownCategories) as Category);
   const [ error, setError ] = useState<string>();
 
   const { searchJokes } = useChuckApi();
@@ -53,7 +54,7 @@ const JokesPage = () => {
   useEffect(() => {
     const availableCategories = Object.keys(categorizedJokes);
     if (!categorizedJokes[activeCategory] && availableCategories.length) {
-      setActiveCategory(availableCategories[0] as Category);
+      setActiveCategory(getRandomKey(categorizedJokes) as Category);
     }
   }, [ setActiveCategory, activeCategory, categorizedJokes ]);
 
