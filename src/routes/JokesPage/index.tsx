@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Category } from '../../components/Category/Tag';
 import useChuckApi, { JokesResData } from '../../hooks/useChuckApi';
+import CategoriesSection from './CategoriesSection';
 import { addToCategories } from './helpers';
 import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
@@ -52,6 +53,7 @@ const JokesPage = () => {
   }, [ categorizedJokes, activeCategory ]);
 
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
+  const availableCategories = Object.keys(categorizedJokes) as Array<Category>;
   return (<>
     <SearchSection categorizeJokes={ categorizeJokes } setError={ setError } />
     { active &&
@@ -62,6 +64,9 @@ const JokesPage = () => {
         joke={ active }
       />
     }
+    { !active && !!jokes.length && <>
+      <CategoriesSection categories={ availableCategories } />
+    </> }
   </>);
 };
 

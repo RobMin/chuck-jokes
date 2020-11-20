@@ -1,0 +1,41 @@
+@import "../../../scss/breakpoints.scss";
+@import "../../../scss/mixins.scss";
+@import "../../../scss/constants.scss";
+
+.CategoriesSection {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px 20px;
+  margin: 60px auto 40px;
+  width: $desktop;
+  @media #{ $desktop-down } {
+    width: 100%;
+    margin: 30px 30px 20px;
+  }
+
+  &-show-all-button {
+    @include flex-center;
+    justify-content: space-around;
+    padding: 14px;
+    width: 100%;
+    max-width: 206px;
+    border-radius: 2px;
+    border: solid 1px $secondary;
+
+    &-text {
+      @include font(14px, 600);
+      color: $secondary;
+      text-transform: uppercase;
+    }
+
+    &-arrow {
+      $width: 11px;
+
+      width: $width;
+
+      &-placeholder {
+        width: $width;
+      }
+    }
+  }
+}

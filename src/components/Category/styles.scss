@@ -26,72 +26,102 @@
     }
   }
 
+  &-button {
+    @include flex-center;
+    justify-content: center;
+    padding: 14px;
+    width: 100%;
+    max-width: 206px;
+
+    &-text {
+      @include font(14px, 600);
+      text-transform: uppercase;
+    }
+  }
+
 
   &-animal {
+    border-color: #57e690;
     background-color: #57e690;
     color: $white;
   }
   &-career {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-celebrity {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-dev {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-explicit {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-fashion {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-food {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-history {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-money {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-movie {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-music {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-political {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-religion {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-science {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-sport {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-travel {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
   &-uncategorized {
+    border-color: #ff5b5b;
     background-color: #ff5b5b;
     color: $white;
   }
