@@ -11,7 +11,7 @@ interface CategoryButtonProps {
 const CategoryButton = ({ category, onClick }: CategoryButtonProps) => {
   return (
     <button onClick={ onClick } className={ `Category-button Category-${ category }` }>
-      <span className="Category-button-text">{ `${ knownCategories[category] }s` }</span>
+      <span className="Category-button-text">{ knownCategories[category] }s</span>
     </button>
   );
 };

@@ -12,7 +12,7 @@ const CategoryTag = ({ category, withDot }: CategoryTagProps) => {
   return (
     <div className={ `Category-tag Category-${ category }` }>
       { withDot && <span className="Category-tag-dot" /> }
-      { knownCategories[category] }
+      { knownCategories[category] }s
     </div>
   );
 };

@@ -16,17 +16,23 @@
     box-shadow: 0 1px 7px 0 $shadow;
   }
 
+  &-head {
+    @include flex-center;
+  }
+
   &-title {
     @include font(16px, 600);
-    margin: 0;
+    margin: 0 0 0 8px;
     text-transform: uppercase;
     line-height: 1.25;
+    color: $primary;
   }
 
   &-joke {
     @include font(14px, normal);
     line-height: 1.57;
     flex-grow: 1;
+    color: $text;
   }
 
   &-buttons {
