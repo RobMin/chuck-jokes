@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import logo from '../../assets/logo.svg';
-import arrowDown from '../../assets/icons/arrow_down.svg';
-import human from '../../assets/icons/human.svg';
+import logo from 'assets/logo.svg';
+import arrowDown from 'assets/icons/arrow_down.svg';
+import human from 'assets/icons/human.svg';
 import './styles.scss';
 
 const dropdownButtons = [

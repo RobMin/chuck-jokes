@@ -1,6 +1,6 @@
 import React from 'react';
 import { Joke } from '..';
-import CategoryTag, { Category } from '../../../components/Category/Tag';
+import CategoryTag, { Category } from 'components/Category/Tag';
 import { knownCategories } from '../../../constants';
 import './styles.scss';
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Category } from '../../components/Category/Tag';
-import useChuckApi, { JokesResData } from '../../hooks/useChuckApi';
+import { Category } from 'components/Category/Tag';
+import useChuckApi, { JokesResData } from 'hooks/useChuckApi';
 import CategoriesSection from './CategoriesSection';
 import { addToCategories } from './helpers';
 import SearchSection from './SearchSection';

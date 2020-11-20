@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { Joke } from "../routes/JokesPage";
+import { Joke } from "routes/JokesPage";
 
 export interface JokesResData {
   result: Array<Joke>;

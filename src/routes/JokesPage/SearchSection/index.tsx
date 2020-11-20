@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import backgroundImage from '../../../assets/search_section_image.jpg';
-import searchIcon from '../../../assets/icons/search_icon.svg';
-import useChuckApi, { JokesResData } from '../../../hooks/useChuckApi';
+import backgroundImage from 'assets/search_section_image.jpg';
+import searchIcon from 'assets/icons/search_icon.svg';
+import useChuckApi, { JokesResData } from 'hooks/useChuckApi';
 import './styles.scss';
 
 interface SearchSectionProps {

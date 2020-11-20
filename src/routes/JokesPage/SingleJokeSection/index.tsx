@@ -1,10 +1,10 @@
 import React from 'react';
 import { Joke } from '..';
-import Button from '../../../components/Button';
-import TopJokes from '../../../components/TopJokes';
-import buttonCurve from '../../../assets/button_curve.png';
-import arrowLeft from '../../../assets/icons/arrow_left_secondary.svg';
-import arrowRight from '../../../assets/icons/arrow_right_secondary.svg';
+import Button from 'components/Button';
+import TopJokes from 'components/TopJokes';
+import buttonCurve from 'assets/button_curve.png';
+import arrowLeft from 'assets/icons/arrow_left_secondary.svg';
+import arrowRight from 'assets/icons/arrow_right_secondary.svg';
 import SingleJokeCard from '../SingleJokeCard';
 import './styles.scss';
 

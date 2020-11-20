@@ -1,6 +1,6 @@
-@import "../../scss/breakpoints.scss";
-@import "../../scss/mixins.scss";
-@import "../../scss/constants.scss";
+@import "scss/breakpoints.scss";
+@import "scss/mixins.scss";
+@import "scss/constants.scss";
 
 @mixin headerButton {
   @include font(14px, 600);

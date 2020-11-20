@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CategoryButton from '../../../components/Category/Button';
-import { Category } from '../../../components/Category/Tag';
-import arrowDown from '../../../assets/icons/tailed_arrow_down.svg';
+import CategoryButton from 'components/Category/Button';
+import { Category } from 'components/Category/Tag';
+import arrowDown from 'assets/icons/tailed_arrow_down.svg';
 import './styles.scss';
 
 interface CategoriesSectionProps {
