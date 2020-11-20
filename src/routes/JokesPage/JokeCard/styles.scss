@@ -10,6 +10,7 @@
   border-radius: 2px;
   border: solid 1px $dark-white;
   background-color: $white;
+  word-break: break-word;
   transition: 300ms;
   &:hover {
     box-shadow: 0 1px 7px 0 $shadow;

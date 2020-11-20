@@ -2,22 +2,34 @@
 @import "scss/mixins.scss";
 @import "scss/constants.scss";
 
-.Button {
+.Button, .BigButton {
   @include flex-center;
-  border: 1px solid $dark-white;
-  background-color: $white;
-  padding: 10px;
+  @include font(14px, 600);
   color: $secondary;
-  position: relative;
+  text-transform: uppercase;
+  background-color: $white;
+}
 
-  &-text {
-    @include font(14px, 600);
-    text-transform: uppercase;
-    line-height: 1.43;
-  }
+.Button {
+  padding: 10px;
+  position: relative;
+  border: 1px solid $dark-white;
 
   &-icon {
     height: 15px;
     padding: 0 8px;
+  }
+}
+
+.BigButton {
+  justify-content: space-around;
+  padding: 14px;
+  max-width: 206px;
+  width: 100%;
+  border-radius: 2px;
+  border: solid 1px $secondary;
+
+  &-icon {
+    width: 11px;
   }
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CategoryButton from 'components/Category/Button';
-import { Category } from 'components/Category/Tag';
+import { Category } from 'components/Category/index.d';
 import arrowDown from 'assets/icons/tailed_arrow_down.svg';
 import './styles.scss';
+import Button from 'components/Button';
 
 interface CategoriesSectionProps {
   categories: Array<Category>;
@@ -22,11 +23,9 @@ const CategoriesSection = ({ categories, onCategoryChange }: CategoriesSectionPr
         <CategoryButton key={ i } onClick={ () => onCategoryChange(cat) } category={ cat as Category } />
       )) }
       { categories.length > 7 && !showAll && (
-        <button className="CategoriesSection-show-all-button" onClick={ () => setShowAll(true) }>
-          <span className="CategoriesSection-show-all-button-placeholder" />
-          <span className="CategoriesSection-show-all-button-text">View all</span>
-          <img src={ arrowDown } alt="arrow down" className="CategoriesSection-show-all-button-arrow" />
-        </button>
+        <Button type="big" iconPosition="right" icon={ arrowDown } onClick={ () => setShowAll(true) }>
+          View all
+        </Button>
       ) }
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import CategoryTag, { Category } from 'components/Category/Tag';
+import CategoryTag from 'components/Category/Tag';
+import { Category } from 'components/Category/index.d';
 import useChuckApi from 'hooks/useChuckApi';
 import CategoriesSection from './CategoriesSection';
 import { addToCategories } from './helpers';
@@ -15,6 +16,8 @@ export interface Joke {
   url: string;
   value: string;
   categories: Array<Category>;
+  likes: number;
+  dislikes: number;
 }
 
 export interface CategorizedJokes {
@@ -22,7 +25,7 @@ export interface CategorizedJokes {
 }
 
 const JokesPage = () => {
-  const [ active, setActive ] = useState<Joke | null>(null);
+  const [ activeIdx, setActiveIdx ] = useState(-1);
   const [ categorizedJokes, setCategorizedJokes ] = useState<CategorizedJokes>({});
   const [ availableCategories, setAvailableCategories ] = useState(Object.keys(knownCategories) as Array<Category>);
   const [ activeCategory, setActiveCategory ] = useState<Category>('dev');
@@ -37,14 +40,14 @@ const JokesPage = () => {
         const categorizedJokes = result.reduce(addToCategories, {});
         setCategorizedJokes(categorizedJokes);
         setAvailableCategories(Object.keys(categorizedJokes) as Array<Category>);
-        setActive(total === 1 ? result[0] : null);
+        setActiveIdx(total === 1 ? 0 : -1);
       } catch(e) {
         setError(e.message);
       }
     };
 
     getJokes();
-  }, [ setError, searchJokes, setCategorizedJokes, setActive, query ]);
+  }, [ setError, searchJokes, setCategorizedJokes, setActiveIdx, query ]);
 
   // Gets sure that if there are any jokes available, 'activeCategory' is not empty
   useEffect(() => {
@@ -55,13 +58,14 @@ const JokesPage = () => {
   }, [ setActiveCategory, activeCategory, categorizedJokes ]);
 
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
+  const active = activeIdx === -1 ? null : jokes[activeIdx];
   return (<>
     <SearchSection query={ query } setQuery={ setQuery } />
     { active &&
       <SingleJokeSection
-        nextJoke={ () => {} }
-        prevJoke={ () => {} }
-        exitSingleJokeSection={ () => setActive(null) }
+        nextJoke={ activeIdx === jokes.length - 1 ? null : () => setActiveIdx(activeIdx + 1) }
+        prevJoke={ activeIdx === 0 ? null : () => setActiveIdx(activeIdx - 1) }
+        exitSingleJokeSection={ () => setActiveIdx(-1) }
         joke={ active }
       />
     }
@@ -73,7 +77,7 @@ const JokesPage = () => {
       <div className="JokesPage-tag-display-section">
         <CategoryTag category={ activeCategory } />
       </div>
-      <JokesSection jokes={ jokes } setActive={ setActive } />
+      <JokesSection jokes={ jokes } setActiveIdx={ setActiveIdx } />
     </> }
   </>);
 };

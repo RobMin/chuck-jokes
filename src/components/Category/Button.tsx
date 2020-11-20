@@ -1,8 +1,8 @@
 import React from 'react';
+import { Category } from './index.d';
 import { knownCategories } from '../../constants';
 import './styles.scss';
 
-export type Category = keyof typeof knownCategories;
 interface CategoryButtonProps {
   category: Category;
   onClick: () => any;

@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Joke } from '..';
-import './styles.scss';
 import JokeCard from '../JokeCard';
+import Button from 'components/Button';
+import arrowDown from 'assets/icons/tailed_arrow_down.svg';
+import './styles.scss';
 
 interface JokeCardProps {
   jokes: Array<Joke>;
-  setActive: (joke: Joke) => void;
+  setActiveIdx: (idx: number) => void;
 }
 
-const JokesSection = ({ jokes, setActive }: JokeCardProps) => {
+const JokesSection = ({ jokes, setActiveIdx }: JokeCardProps) => {
+  const [ page, setPage ] = useState(1);
+
+  useEffect(() => {
+    setPage(1);
+  }, [ setPage, jokes ])
+
   return (
     <div className="JokesSection">
-      { jokes.map(joke =>
-        <JokeCard key={ joke.id } joke={ joke } onClick={ () => setActive(joke) } />
+      <div className="JokesSection-grid">
+        { jokes.slice(0, page * 9).map((joke, i) =>
+          <JokeCard key={ joke.id } joke={ joke } onClick={ () => setActiveIdx(i) } />
+        ) }
+      </div>
+      { jokes.length > page * 9 && (
+        <div className="JokesSection-more-button-wrapper">
+          <Button type="big" iconPosition="right" icon={ arrowDown } onClick={ () => setPage(page + 1) }>
+            View more
+          </Button>
+        </div>
       ) }
     </div>
   );

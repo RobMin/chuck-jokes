@@ -11,8 +11,8 @@ import './styles.scss';
 interface SingleJokeSectionProps {
   joke: Joke;
   exitSingleJokeSection: () => void;
-  nextJoke?: () => any;
-  prevJoke?: () => any;
+  nextJoke: (() => any) | null;
+  prevJoke: (() => any) | null;
 }
 
 const SingleJokeSection = ({ joke, exitSingleJokeSection, nextJoke, prevJoke }: SingleJokeSectionProps) => {

@@ -1,27 +1,31 @@
 import React from 'react';
 import './styles.scss';
 
-interface SingleJokeSectionProps {
+interface ButtonProps {
   icon?: string;
   iconPosition?: 'right' | 'left';
   border?: string;
   backgroundColor?: string;
   color?: string;
   children: string;
+  type?: 'regular' | 'big';
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const Button = ({ icon, iconPosition, border, backgroundColor, color, children, onClick }: SingleJokeSectionProps) => {
+const Button = ({ icon, iconPosition, border, backgroundColor, color, children, onClick, type }: ButtonProps) => {
   const style: any = {};
   if (border) style.border = border;
   if (backgroundColor) style.backgroundColor = backgroundColor;
   if (color) style.color = color;
 
+  const prefix = type === 'big' ? 'Big' : '';
+  const iconImg = <img src={ icon } alt="button icon" className={ `${ prefix }Button-icon` } />;
+  const iconPlaceholder = <span className="BigButton-icon" />;
   return (
-    <button onClick={ onClick } className="Button" style={ style }>
-      { iconPosition === 'left' && <img className="Button-icon" alt="button icon" src={ icon } /> }
-      <span className="Button-text">{ children }</span>
-      { iconPosition === 'right' && <img className="Button-icon" alt="button icon" src={ icon } /> }
+     <button className={ `${ prefix }Button` } onClick={ onClick } style={ style }>
+      { iconPosition === 'left' ? iconImg : (type === 'big' && iconPlaceholder) }
+      <span>{ children }</span>
+      { iconPosition === 'right' ? iconImg : (type === 'big' && iconPlaceholder) }
     </button>
   );
 };

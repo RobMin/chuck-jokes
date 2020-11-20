@@ -3,13 +3,23 @@
 @import "scss/constants.scss";
 
 .JokesSection {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 38px 15px;
-  margin: 60px auto 40px;
+  margin: 60px auto 58px;
   width: $desktop;
   @media #{ $desktop-down } {
     width: 100%;
     margin: 30px 30px 20px;
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 38px 15px;
+    margin-bottom: 64px;
+  }
+
+  &-more-button-wrapper {
+    @include flex-center;
+    justify-content: center;
+    width: 100%;
   }
 }
