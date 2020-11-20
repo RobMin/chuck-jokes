@@ -13,7 +13,7 @@ const SingleJokeCard = ({ joke }: SingleJokeSectionProps) => {
     <div className="SingleJokeCard">
       <div className="SingleJokeCard-head">
         { joke.categories && joke.categories.map((cat, i) => (
-          <CategoryTag key={ i } category={ cat as Category } />
+          <CategoryTag key={ i } withDot category={ cat as Category } />
         )) }
       </div>
         { joke.categories && (

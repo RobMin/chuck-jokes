@@ -1,0 +1,35 @@
+@import "scss/breakpoints.scss";
+@import "scss/mixins.scss";
+@import "scss/constants.scss";
+
+.JokeCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 264px;
+  padding: 16px;
+  border-radius: 2px;
+  border: solid 1px $dark-white;
+  background-color: $white;
+  transition: 300ms;
+  &:hover {
+    box-shadow: 0 1px 7px 0 $shadow;
+  }
+
+  &-title {
+    @include font(16px, 600);
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+
+  &-joke {
+    @include font(14px, normal);
+    line-height: 1.57;
+    flex-grow: 1;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

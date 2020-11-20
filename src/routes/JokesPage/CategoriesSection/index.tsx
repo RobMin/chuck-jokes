@@ -6,9 +6,10 @@ import './styles.scss';
 
 interface CategoriesSectionProps {
   categories: Array<Category>;
+  onCategoryChange: (category: Category) => void;
 }
 
-const CategoriesSection = ({ categories }: CategoriesSectionProps) => {
+const CategoriesSection = ({ categories, onCategoryChange }: CategoriesSectionProps) => {
   const [ showAll, setShowAll ] = useState(false);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const CategoriesSection = ({ categories }: CategoriesSectionProps) => {
   return (
     <div className="CategoriesSection">
       { categories.slice(0, showAll ? Infinity : 7).map((cat, i) => (
-        <CategoryButton key={ i } onClick={ () => {} } category={ cat as Category } />
+        <CategoryButton key={ i } onClick={ () => onCategoryChange(cat) } category={ cat as Category } />
       )) }
       { categories.length > 7 && !showAll && (
         <button className="CategoriesSection-show-all-button">

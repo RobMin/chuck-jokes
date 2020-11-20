@@ -1,37 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import backgroundImage from 'assets/search_section_image.jpg';
 import searchIcon from 'assets/icons/search_icon.svg';
-import useChuckApi, { JokesResData } from 'hooks/useChuckApi';
 import './styles.scss';
 
 interface SearchSectionProps {
-  categorizeJokes: (res: JokesResData) => any;
-  setError: (err: string) => void;
+  setQuery: (query: string) => void;
+  query: string;
 }
 
-const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
-  const [ input, setInput ] = useState('');
-  const { searchJokes } = useChuckApi();
-
-  const initialRender = useRef(true);
+const SearchSection = ({ setQuery, query }: SearchSectionProps) => {
+  const [ input, setInput ] = useState(query);
   useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false;
-      return;
-    }
-
-    const search = async () => {
-      try {
-        const res = await searchJokes(input);
-        categorizeJokes(res);
-      } catch(e) {
-        setError(e.message);
+    const changeQuery = () => {
+      if (query !== input) {
+        setQuery(input);
       }
     };
 
-    const timeoutId = setTimeout(search, 1000);
+    const timeoutId = setTimeout(changeQuery, 1000);
     return () => clearTimeout(timeoutId);
-  }, [ input, setError, searchJokes, categorizeJokes ])
+  }, [ input ])
 
   return (
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">

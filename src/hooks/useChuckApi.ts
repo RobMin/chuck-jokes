@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback } from "react";
 import { Joke } from "routes/JokesPage";
 
-export interface JokesResData {
+interface JokesResData {
   result: Array<Joke>;
   total: number;
 }
@@ -23,7 +23,7 @@ const useChuckApi = () => {
 
   return {
     getCategories,
-    getAllJokes: searchJokes,
+    getAllJokes: searchJokes as () => Promise<JokesResData>,
     searchJokes
   };
 };

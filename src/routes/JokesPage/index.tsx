@@ -1,17 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Category } from 'components/Category/Tag';
-import useChuckApi, { JokesResData } from 'hooks/useChuckApi';
+import React, { useEffect, useState } from 'react';
+import CategoryTag, { Category } from 'components/Category/Tag';
+import useChuckApi from 'hooks/useChuckApi';
 import CategoriesSection from './CategoriesSection';
 import { addToCategories } from './helpers';
 import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
+import './styles.scss';
+import JokesSection from './JokesSection';
 
 export interface Joke {
   icon_url: string;
   id: string;
   url: string;
   value: string;
-  categories?: Array<Category>;
+  categories: Array<Category>;
 }
 
 export interface CategorizedJokes {
@@ -24,38 +26,35 @@ const JokesPage = () => {
   const [ activeCategory, setActiveCategory ] = useState<Category>('dev');
   const [ error, setError ] = useState<string>();
 
-  const categorizeJokes = useCallback(
-    ({ result, total }: JokesResData) => {
-      const categorizedJokes = result.reduce(addToCategories, {});
-      setCategorizedJokes(categorizedJokes);
-      setActive(total === 1 ? result[0] : null);
-    }, [ setCategorizedJokes, setActive ]);
-
-  const { getAllJokes } = useChuckApi();
+  const { searchJokes } = useChuckApi();
+  const [ query, setQuery ] = useState<string>('');
   useEffect(() => {
     const getJokes = async () => {
       try {
-        const res = await getAllJokes();
-        categorizeJokes(res);
+        const { result, total } = await searchJokes(query || 'all');
+        const categorizedJokes = result.reduce(addToCategories, {});
+        setCategorizedJokes(categorizedJokes);
+        setActive(total === 1 ? result[0] : null);
       } catch(e) {
         setError(e.message);
       }
     };
 
     getJokes();
-  }, [ setError, categorizeJokes, getAllJokes ]);
+  }, [ setError, searchJokes, setCategorizedJokes, setActive, query ]);
 
+  // Gets sure that if there are any jokes available, 'activeCategory' is not empty
   useEffect(() => {
     const availableCategories = Object.keys(categorizedJokes);
     if (!categorizedJokes[activeCategory] && availableCategories.length) {
       setActiveCategory(availableCategories[0] as Category);
     }
-  }, [ categorizedJokes, activeCategory ]);
+  }, [ setActiveCategory, activeCategory, categorizedJokes ]);
 
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
   const availableCategories = Object.keys(categorizedJokes) as Array<Category>;
   return (<>
-    <SearchSection categorizeJokes={ categorizeJokes } setError={ setError } />
+    <SearchSection query={ query } setQuery={ setQuery } />
     { active &&
       <SingleJokeSection
         nextJoke={ () => {} }
@@ -65,7 +64,14 @@ const JokesPage = () => {
       />
     }
     { !active && !!jokes.length && <>
-      <CategoriesSection categories={ availableCategories } />
+      <CategoriesSection
+        categories={ availableCategories }
+        onCategoryChange={ (cat: Category) => setActiveCategory(cat) }
+      />
+      <div className="JokesPage-tag-display-section">
+        <CategoryTag category={ activeCategory } />
+      </div>
+      <JokesSection jokes={ jokes } setActive={ setActive } />
     </> }
   </>);
 };
