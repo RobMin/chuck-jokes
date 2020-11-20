@@ -25,3 +25,10 @@
   font-style: normal;
   letter-spacing: normal;
 }
+
+@mixin card {
+  background-color: $white;
+  border: 1px solid $dark-white;
+  border-radius: 4px;
+  padding: 18px;
+}

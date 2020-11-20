@@ -3,11 +3,8 @@
 @import "../../scss/constants.scss";
 
 .SingleJokeCard {
+  @include card;
   width: 100%;
-  background-color: $white;
-  border: 1px solid $dark-white;
-  border-radius: 4px;
-  padding: 18px;
 
   &-title {
     @include font(40px, 600);
@@ -17,7 +14,7 @@
 
   &-joke {
     @include font(15px, normal);
-    color: $text-regular;
+    color: $text;
     line-height: 1.47;
   }
 }

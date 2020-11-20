@@ -1,0 +1,25 @@
+@import "../../scss/breakpoints.scss";
+@import "../../scss/mixins.scss";
+@import "../../scss/constants.scss";
+
+.TopJokesCard {
+  @include card;
+  width: 100%;
+  padding: 32px;
+
+  &-title {
+    @include font(15px, 600);
+    margin: 0 0 16px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: $text;
+  }
+
+  &-item {
+    @include font(15px, normal);
+    margin: 8px 0;
+    line-height: 1.47;
+    display: block;
+    color: $text;
+  }
+}

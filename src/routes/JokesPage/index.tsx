@@ -46,7 +46,7 @@ const JokesPage = () => {
 
   return (<>
     <SearchSection categorizeJokes={ categorizeJokes } setError={ setError } />
-    { active && <SingleJokeSection exitSingleJokeSection={ () => setActive(null) } joke={ active } /> }
+    { active && <SingleJokeSection nextJoke={ () => {} } prevJoke={ () => {} } exitSingleJokeSection={ () => setActive(null) } joke={ active } /> }
   </>);
 };
 

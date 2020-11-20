@@ -14,7 +14,6 @@
   &-back-button {
     @include flex-center;
     justify-content: center;
-    border: 1px solid black;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -22,5 +21,45 @@
     height: 62px;
     cursor: pointer;
     margin: 46px 0 48px;
+  }
+
+  &-content-wrapper {
+    display: flex;
+    @media #{ $desktop-down } {
+      flex-direction: column;
+    }
+  }
+
+  &-joke {
+    &-wrapper {
+      flex: 2;
+      margin-right: 30px;
+      @media #{ $desktop-down } {
+        margin: 0 0 30px;
+      }
+    }
+
+    &-buttons-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 30px;
+    }
+  }
+
+  &-nav-buttons {
+    display: flex;
+    & > *:last-child {
+      margin-left: 8px;
+    }
+  }
+
+  &-react-buttons {
+    flex: 1;
+  }
+
+  &-side-section-wrapper {
+    margin-bottom: 30px;
+    flex: 1;
   }
 }
