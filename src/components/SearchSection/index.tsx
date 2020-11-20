@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import backgroundImage from '../../assets/search_section_image.jpg';
 import searchIcon from '../../assets/icons/search_icon.svg';
 import './styles.scss';
@@ -13,21 +13,25 @@ const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
   const [ input, setInput ] = useState('');
   const { searchJokes } = useChuckApi();
 
-  const search = async (e: any) => {
-    e.preventDefault();
-    try {
-      const res = await searchJokes(input);
-      categorizeJokes(res);
-    } catch(e) {
-      setError(e.message);
-    }
-  };
+  useEffect(() => {
+    const search = async () => {
+      try {
+        const res = await searchJokes(input);
+        categorizeJokes(res);
+      } catch(e) {
+        setError(e.message);
+      }
+    };
+
+    const timeoutId = setTimeout(search, 1000);
+    return () => clearTimeout(timeoutId);
+  }, [input])
 
   return (
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">
       <h4 className="SearchSection-title">The Joke Bible</h4>
       <h6 className="SearchSection-subtitle">Daily Laughs for you and yours</h6>
-      <form className="SearchSection-search-wrapper" onSubmit={ search }>
+      <div className="SearchSection-search-wrapper">
         <input
           type="text"
           className="SearchSection-search"
@@ -35,10 +39,10 @@ const SearchSection = ({ categorizeJokes, setError }: SearchSectionProps) => {
           value={ input }
           onChange={ (e) => e.target.value.length < 300 && setInput(e.target.value) }
         />
-        <button type="submit" className="SearchSection-search-icon-wrapper">
+        <span className="SearchSection-search-icon-wrapper">
           <img alt="search icon" src={ searchIcon } className="SearchSection-search-icon"/>
-        </button>
-      </form>
+        </span>
+      </div>
     </section>
   );
 };

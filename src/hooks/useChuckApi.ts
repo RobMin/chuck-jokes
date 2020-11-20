@@ -11,7 +11,7 @@ const useChuckApi = () => {
     axios.get('https://api.chucknorris.io/jokes/categories').then(res => res.data);
 
   const searchJokes = async (search: string) => {
-    if (search === '') {
+    if (search.length < 3) {
       return { total: 0, result: [] }; // otherwise the API will throw an error
     }
 

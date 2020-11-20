@@ -41,9 +41,7 @@ const JokesPage = () => {
   const categorizeJokes = ({ result, total }: JokeSearchData) => {
     const categorizedJokes = result.reduce(addToCategories, {});
     setJokes(categorizedJokes);
-    if (total === 1) {
-      setActive(result[0]);
-    }
+    setActive(total === 1 ? result[0] : null);
   };
 
   return (<>
