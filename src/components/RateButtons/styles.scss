@@ -1,13 +1,11 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .RateButtons {
   display: flex;
 }
 
 .RateButton {
-  @include flex-center;
+  @extend %flex-center;
   flex-direction: column;
   margin: 0 16px;
 
@@ -18,7 +16,7 @@
   }
 
   &-icon-wrapper {
-    @include flex-center;
+    @extend %flex-center;
     justify-content: center;
     width: 40px;
     height: 40px;

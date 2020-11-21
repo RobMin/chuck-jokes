@@ -1,6 +1,4 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .SingleJokeSection {
   width: $desktop;
@@ -12,7 +10,7 @@
   }
 
   &-back-button {
-    @include flex-center;
+    @extend %flex-center;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,16 +1,12 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .SearchSection {
-  @include flex-center;
+  @extend %background-image;
+  @extend %flex-center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 320px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   padding: $mobile-borders;
   @media #{ $desktop-down } {
     height: 240px;
@@ -58,7 +54,7 @@
     }
 
     &-wrapper {
-      @include flex-stretch;
+      @extend %flex-stretch;
       margin: 45px 0;
       max-width: 458px;
       width: 100%;

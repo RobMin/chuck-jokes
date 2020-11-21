@@ -1,6 +1,4 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .JokesSection {
   margin: 60px auto 58px;
@@ -22,7 +20,7 @@
   }
 
   &-more-button-wrapper {
-    @include flex-center;
+    @extend %flex-center;
     justify-content: center;
     width: 100%;
   }

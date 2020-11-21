@@ -1,9 +1,7 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .Button, .BigButton {
-  @include flex-center;
+  @extend %flex-center;
   @include font(14px, 600);
   color: $secondary;
   text-transform: uppercase;

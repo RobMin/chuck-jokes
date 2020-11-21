@@ -1,14 +1,12 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .SingleJokeCard {
-  @include card;
+  @extend %card;
   width: 100%;
   overflow: auto;
 
   &-head {
-    @include flex-center;
+    @extend %flex-center;
     justify-content: space-between;
     flex-wrap: wrap;
 

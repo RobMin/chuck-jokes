@@ -1,6 +1,4 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 @mixin headerButton {
   @include font(14px, 600);
@@ -22,7 +20,7 @@
     }
   }
 
-  @include flex-center;
+  @extend %flex-center;
   height: 100%;
   width: $desktop;
   margin-left: auto;
@@ -43,13 +41,13 @@
   }
 
   &-buttons-wrapper {
-    @include flex-stretch;
+    @extend %flex-stretch;
     @media #{ $desktop-down } {
       display: none;
     }
 
     &-mobile {
-      @include flex-center;
+      @extend %flex-center;
       @media #{ $desktop-up } {
         display: none;
       }

@@ -1,6 +1,4 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .Category {
   &-tag {
@@ -17,7 +15,7 @@
   }
 
   &-button {
-    @include flex-center;
+    @extend %flex-center;
     justify-content: center;
     padding: 14px;
     width: 100%;

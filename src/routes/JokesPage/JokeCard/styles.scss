@@ -1,6 +1,4 @@
-@import "scss/breakpoints.scss";
-@import "scss/mixins.scss";
-@import "scss/constants.scss";
+@import "scss/all.scss";
 
 .JokeCard {
   display: flex;
@@ -17,7 +15,7 @@
   }
 
   &-head {
-    @include flex-center;
+    @extend %flex-center;
   }
 
   &-title {
