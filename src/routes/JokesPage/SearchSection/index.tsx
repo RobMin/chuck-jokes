@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import backgroundImage from 'assets/search_section_image.jpg';
 import searchIcon from 'assets/icons/search_icon.svg';
 import whiteLoading from 'assets/icons/white_loading.svg';
 import { JokeWithIdx } from '../helpers';
 import CategoryBolt from 'components/Category/Bolt';
 import { knownCategories } from '../../../constants';
-import useOutClick from 'hooks/useOutClick';
+import useFade from 'hooks/useFade';
 import './styles.scss';
 
 interface SearchSectionProps {
@@ -18,7 +18,6 @@ interface SearchSectionProps {
 
 const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: SearchSectionProps) => {
   const [ show, setShow ] = useState(false);
-  const [ blockDropdown, setBlockDropdown ] = useState(true);
   const [ localLoading, setLocalLoading ] = useState(false);
   const [ input, setInput ] = useState(query);
   useEffect(() => {
@@ -26,32 +25,32 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
       setLocalLoading(false);
       if (query !== input) {
         setQuery(input);
-        setBlockDropdown(false);
       }
     };
 
     setLocalLoading(true);
     const timeoutId = setTimeout(changeQuery, 1000);
     return () => clearTimeout(timeoutId);
-  }, [ input, query, setQuery, setShow ]);
+  }, [ input, query, setQuery ]);
 
-  useEffect(() => {
-    setShow(true);
-  }, [ jokesWithIdx, setShow ]);
+  const handleJokeSelect = (jokeWithIdx: JokeWithIdx) => {
+    if (!loading && !localLoading) {
+      return;
+    }
 
-  const searchRef = useRef(null);
-  const closeDropdown = useCallback(
-    () => setShow(false),
-    [ setShow ],
-  );
-  useOutClick(searchRef, closeDropdown);
+    selectJoke(jokeWithIdx);
+    setShow(false);
+  };
 
+  const fadeClasses = useFade(show);
   return (
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">
       <h4 className="SearchSection-title">The Joke Bible</h4>
       <h6 className="SearchSection-subtitle">Daily Laughs for you and yours</h6>
-      <div className="SearchSection-search-wrapper" ref={ searchRef }>
+      <div className="SearchSection-search-wrapper">
         <input
+          onFocus={ () => setShow(true) }
+          onBlur={ () => setShow(false) }
           type="text"
           className="SearchSection-search"
           placeholder="How can we make you laugh today?"
@@ -64,13 +63,13 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
             : <img alt="search icon" src={ searchIcon } className="SearchSection-search-icon"/>
           }
         </span>
-        { !blockDropdown && show && !!jokesWithIdx.length && (
-          <div className="SearchSection-search-dropdown-wrapper">
-            { jokesWithIdx.map((jokesWithIdx, i) => {
-              const cat = jokesWithIdx.joke.categories[0];
-              const val = jokesWithIdx.joke.value;
+        { !!jokesWithIdx.length && (
+          <div className={ `SearchSection-search-dropdown-wrapper ${ fadeClasses }` }>
+            { jokesWithIdx.map((jokeWithIdx, i) => {
+              const cat = jokeWithIdx.joke.categories[0];
+              const val = jokeWithIdx.joke.value;
               return (
-                  <button key={ i } className="SearchSection-search-dropdown-item" onClick={ () => { selectJoke(jokesWithIdx); setShow(false); } }>
+                  <button key={ i } className="SearchSection-search-dropdown-item" onClick={ () => handleJokeSelect( jokeWithIdx ) }>
                     <span className="SearchSection-search-dropdown-item-bolt">
                       <CategoryBolt category={ cat } />
                     </span>

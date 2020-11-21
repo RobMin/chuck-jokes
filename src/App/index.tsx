@@ -6,18 +6,20 @@ import Footer from 'components/Footer';
 import './styles.scss';
 
 const App = () => {
-  return (<div className="App">
-    <Header/>
-    <div className="App-body">
-      <Router>
-        <Switch>
-          <Route path="/jokes/:id?" component={ JokesPage } />
-          <Redirect to="/jokes" />
-        </Switch>
-      </Router>
+  return (
+    <div className="App">
+      <Header/>
+      <div className="App-body">
+        <Router>
+          <Switch>
+            <Route path="/jokes/:id?" component={ JokesPage } />
+            <Redirect to="/jokes" />
+          </Switch>
+        </Router>
+      </div>
+      <Footer/>
     </div>
-    <Footer/>
-  </div>);
+  );
 };
 
 export default App;

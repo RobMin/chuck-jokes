@@ -15,5 +15,5 @@
   + implement like/dislike feature
 + Implement the landing page
 + Implement footer
-- Implement search dropdown
-- Add open/close animations for dropdowns
++ Implement search dropdown
++ Add open/close animations for dropdowns

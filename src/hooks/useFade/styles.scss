@@ -1,0 +1,42 @@
+@keyframes reveal {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.UseFade-reveal {
+  display: block;
+  animation-name: reveal;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  transition: 0.3s;
+}
+
+@keyframes hide {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+.UseFade-hide {
+  display: block;
+  animation-name: hide;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.UseFade-hiden {
+  display: none;
+}

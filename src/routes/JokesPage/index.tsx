@@ -80,7 +80,7 @@ const JokesPage = () => {
     />
     { announceNeeded &&
       <div className="JokesPage-announce-wrapper">
-        <Announce jokesCount={ jokes.length } query={ query } />
+        <Announce jokesCount={ jokes.length } query={ query } loading={ loading } />
       </div>
     }
     { !announceNeeded && active &&
@@ -104,8 +104,14 @@ const JokesPage = () => {
   </>);
 };
 
-const Announce = ({ query, jokesCount }: any) => {
-  if (!jokesCount) {
+const Announce = ({ query, jokesCount, loading }: any) => {
+  if (loading) {
+    return (
+      <span className="JokesPage-loading">
+        Loading...
+      </span>
+    );
+  } else if (!jokesCount) {
     return (
       <span className="JokesPage-no-jokes">
         No Chuck Norris jokes were found for your search.<br/>
