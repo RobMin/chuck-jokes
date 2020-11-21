@@ -1,0 +1,35 @@
+@import "scss/all.scss";
+
+.Footer {
+  @extend %background-image;
+  height: 194px;
+  margin-top: 50px;
+
+  &-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: $desktop;
+    margin: 0 auto;
+    @media #{ $desktop-down } {
+      width: 100%;
+      padding: 0 50px;
+    }
+  }
+
+  &-text {
+    @include font(16px, 600);
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: $white;
+    width: 206px;
+  }
+
+  &-button {
+    margin-top: 10px;
+    padding: 0;
+  }
+}

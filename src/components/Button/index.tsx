@@ -9,7 +9,7 @@ interface ButtonProps {
   color?: string;
   children: string;
   type?: 'regular' | 'big';
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   customClasses?: string;
 }
 
@@ -23,7 +23,7 @@ const Button = ({ icon, iconPosition, border, backgroundColor, color, children, 
   const iconImg = <img src={ icon } alt="button icon" className={ `${ prefix }Button-icon` } />;
   const iconPlaceholder = <span className="BigButton-icon" />;
   return (
-     <button className={ `${ prefix }Button ${ customClasses || '' }` } onClick={ onClick } style={ style }>
+    <button className={ `${ prefix }Button ${ customClasses || '' }` } onClick={ onClick } style={ style }>
       { iconPosition === 'left' ? iconImg : (type === 'big' && iconPlaceholder) }
       <span>{ children }</span>
       { iconPosition === 'right' ? iconImg : (type === 'big' && iconPlaceholder) }

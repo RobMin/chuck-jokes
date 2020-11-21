@@ -20,7 +20,7 @@ const JokeCard = ({ joke, onClick }: JokeCardProps) => {
       </div>
       <p className="JokeCard-joke">{ joke.value }</p>
       <div className="JokeCard-buttons">
-        <Button iconPosition="right" icon={ arrowRight } onClick={ onClick } border="none">
+        <Button iconPosition="right" icon={ arrowRight } onClick={ onClick } border="none" backgroundColor="transparent">
           See stats
         </Button>
       </div>
