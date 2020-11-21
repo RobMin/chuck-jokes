@@ -43,15 +43,11 @@ const Header = () => {
             <img alt="human" src={ arrowDown } className="Header-dropdown-arrow"/>
             { show && (
               <div className="Header-dropdown-wrapper">
-                <div className="Header-dropdown-wrapper-arrow"/>
-                { dropdownButtons.map((button, i) => (<Fragment key={ i }>
-                  <button className={ `Header-dropdown-item ${ button.classes || '' }` }>
+                { dropdownButtons.map((button, i) => (
+                  <button key={ i } className={ `Header-dropdown-item ${ button.classes || '' }` }>
                     { button.title }
                   </button>
-                  { i !== dropdownButtons.length - 1 &&
-                    <div className="Header-dropdown-item-divider"/>
-                  }
-                </Fragment>)) }
+                )) }
               </div>
             ) }
           </div>

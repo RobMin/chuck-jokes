@@ -13,20 +13,16 @@
   }
 
   &-title {
-    @include font(48px, normal);
+    @include font(48px, normal, $secondary, 1.5);
     margin-top: 40px;
     margin-bottom: 0px;
-    line-height: 1.5;
-    color: $secondary;
     @media #{ $desktop-down } {
       @include font(36px, normal);
     }
   }
 
   &-subtitle {
-    @include font(22px, 600);
-    line-height: 1.45;
-    color: $white;
+    @include font(22px, 600, $white, 1.45);
     margin: 0;
     @media #{ $desktop-down } {
       @include font(16px, normal);
@@ -34,20 +30,18 @@
   }
 
   &-search {
-    @include font(16px, normal);
+    @include font(16px, normal, $white);
     border: none;
     outline: none;
     width: calc(100% - 48px);
     padding-left: 15px;
     padding-right: 15px;
     background-color: transparent;
-    color: white;
     @media #{ $desktop-down } {
       @include font(14px, normal);
     }
     &::placeholder {
-      @include font(16px, normal);
-      color: $grey;
+      @include font(16px, normal, $grey);
       @media #{ $desktop-down } {
         @include font(14px, normal);
       }

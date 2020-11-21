@@ -1,10 +1,18 @@
-@mixin font($size, $weight) {
+@import "scss/constants";
+
+@mixin font($size, $weight, $color: false, $line-height: false) {
   font-family: Montserrat;
   font-size: $size;
   font-weight: $weight;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
+  @if $color {
+    color: $color;
+  }
+  @if $line-height {
+    line-height: $line-height;
+  }
 }
 
 @mixin bullet($width: 4px, $height: 4px, $left: 10px) {
@@ -16,4 +24,50 @@
   width: $width;
   height: $height;
   border-radius: 100%;
+}
+
+@mixin underline($gap, $color: $grey) {
+  position: relative;
+
+  &:last-child:after {
+    content: none;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - #{ $gap } * 2);
+    margin: 0 auto;
+    border-bottom: 1px solid $color;
+  }
+}
+
+@mixin dropdown($bg, $radius, $box-shadow, $arrow-position: "right") {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 0;
+  width: 100%;
+  background-color: $bg;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    @if $arrow-position == "right" {
+      right: 30px;
+    }
+    @else {
+      left: 30px;
+    }
+
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom: 7px solid $bg;
+  }
 }

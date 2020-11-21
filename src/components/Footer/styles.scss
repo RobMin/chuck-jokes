@@ -20,11 +20,9 @@
   }
 
   &-text {
-    @include font(16px, 600);
-    line-height: 1.25;
+    @include font(16px, 600, $white, 1.25);
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: $white;
     width: 206px;
   }
 

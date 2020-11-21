@@ -14,6 +14,6 @@
   TODO after improving logic
   + implement like/dislike feature
 + Implement the landing page
-- Implement footer
++ Implement footer
 - Implement search dropdown
 - Add open/close animations for dropdowns

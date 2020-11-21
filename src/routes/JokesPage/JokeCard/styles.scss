@@ -19,18 +19,14 @@
   }
 
   &-title {
-    @include font(16px, 600);
+    @include font(16px, 600, $primary, 1.25);
     margin: 0 0 0 8px;
     text-transform: uppercase;
-    line-height: 1.25;
-    color: $primary;
   }
 
   &-joke {
-    @include font(14px, normal);
-    line-height: 1.57;
+    @include font(14px, normal, $text, 1.57);
     flex-grow: 1;
-    color: $text;
   }
 
   &-buttons {

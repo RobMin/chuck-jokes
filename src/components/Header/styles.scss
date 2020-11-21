@@ -1,12 +1,10 @@
 @import "scss/all.scss";
 
 @mixin headerButton {
-  @include font(14px, 600);
+  @include font(14px, 600, $white);
   padding-left: 20px;
   padding-right: 20px;
   letter-spacing: .75px;
-  color: $white;
-  font-family: Montserrat;
 }
 
 .Header {
@@ -79,40 +77,16 @@
     }
 
     &-wrapper {
-      top: calc(100% + 20px);
-      left: 0;
-      position: absolute;
-      background-color: $white;
-      width: 100%;
-      border-radius: 7px;
-      box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.15);
-      &-arrow {
-        top: -16px;
-        right: 30px;
-        position: absolute;
-        width: 0;
-        height: 0;
-        border: 8px solid transparent;
-        border-bottom: 8px solid $white;
-      }
+      @include dropdown($white, 7px, 0 -1px 3px 0 $shadow);
     }
 
     &-item {
-      @include font(14px, normal);
+      @include font(14px, normal, $text-grey, 1.43);
+      @include underline(8px);
       text-align: start;
       width: 100%;
       padding: 10px 16px;
-      line-height: 1.43;
-      color: #5e5e5e;
-      font-family: inherit;
-      &-divider {
-        content: "";
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-        border-bottom: 1px solid $grey;
-      }
+
       &-special {
         color: $secondary;
         font-weight: 600;

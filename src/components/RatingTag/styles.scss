@@ -1,8 +1,7 @@
 @import "scss/all.scss";
 
 .RatingTag {
-  @include font(14px, 600);
-  line-height: 1.71;
+  @include font(14px, 600, false, 1.71);
   position: relative;
   padding: 0 10px 0 20px;
 

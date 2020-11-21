@@ -10,9 +10,8 @@
   margin: 0 16px;
 
   &-count {
-    @include font(12px, 600);
+    @include font(12px, 600, inherit);
     padding: 5px;
-    color: inherit;
   }
 
   &-icon-wrapper {

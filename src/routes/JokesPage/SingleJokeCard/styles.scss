@@ -16,14 +16,11 @@
   }
 
   &-title {
-    @include font(40px, 600);
-    color: $secondary;
+    @include font(40px, 600, $secondary);
     margin: 10px 0;
   }
 
   &-joke {
-    @include font(15px, normal);
-    color: $text;
-    line-height: 1.47;
+    @include font(15px, normal, $text, 1.47);
   }
 }

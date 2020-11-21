@@ -2,8 +2,7 @@
 
 .Button, .BigButton {
   @extend %flex-center;
-  @include font(14px, 600);
-  color: $secondary;
+  @include font(14px, 600, $secondary);
   text-transform: uppercase;
   background-color: $white;
 }
