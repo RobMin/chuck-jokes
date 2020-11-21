@@ -44,9 +44,9 @@ const Header = () => {
             { show && (
               <div className="Header-dropdown-wrapper">
                 { dropdownButtons.map((button, i) => (
-                  <button key={ i } className={ `Header-dropdown-item ${ button.classes || '' }` }>
+                  <a key={ i } className={ `Header-dropdown-item ${ button.classes || '' }` }>
                     { button.title }
-                  </button>
+                  </a>
                 )) }
               </div>
             ) }

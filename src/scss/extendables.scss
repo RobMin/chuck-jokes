@@ -23,3 +23,9 @@
   display: flex;
   align-items: center;
 }
+
+%ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

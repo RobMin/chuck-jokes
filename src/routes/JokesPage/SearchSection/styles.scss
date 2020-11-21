@@ -49,6 +49,7 @@
 
     &-wrapper {
       @extend %flex-stretch;
+      position: relative;
       margin: 45px 0;
       max-width: 458px;
       width: 100%;
@@ -57,12 +58,42 @@
       border-radius: 4px;
     }
 
+    &-loading-icon {
+      // height: 80%;
+      // width: 80%;
+    }
     &-icon {
       &-wrapper {
+        padding: 10px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-grow: 1;
+      }
+    }
+
+    &-dropdown {
+      &-wrapper {
+        @include dropdown($white, 7px, 0 -1px 3px 0 $shadow, "left");
+        z-index: 1000000;
+      }
+
+      &-item {
+        @extend %flex-center;
+        @include underline(16px);
+        width: 100%;
+        height: 50px;
+        padding: 0 20px 0 0;
+
+        &-bolt {
+          display: inline-block;
+          min-width: 40px;
+        }
+
+        &-text {
+          @extend %ellipsis;
+          @include font(15px, normal, $text-lighter, 1.33);
+        }
       }
     }
   }

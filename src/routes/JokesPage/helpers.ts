@@ -1,3 +1,4 @@
+import { Category } from 'components/Category/index.d';
 import { CategorizedJokes, Joke } from ".";
 
 const addTo = (obj: CategorizedJokes, joke: Joke, category: string) => {
@@ -25,4 +26,27 @@ export const addToCategories = (obj: CategorizedJokes, joke: Joke) => {
 export const getRandomKey = (obj: any) => {
   const keys = Object.keys(obj);
   return keys[randomNumTill(keys.length)];
+};
+
+export type JokeWithIdx = { idx: number, joke: Joke };
+export const getRandomJokePerRandomCategory = (obj: CategorizedJokes, count = 4): Array<JokeWithIdx> => {
+  const availableCategories = Object.keys(obj) as Array<Category>;
+
+  let chosenCategories: Array<Category> = [];
+  if (availableCategories.length <= count) {
+    chosenCategories = availableCategories;
+  } else {
+    for (let i = 0; i < count; ++i) {
+      const idx = randomNumTill(availableCategories.length);
+      const chosenCategory = availableCategories.splice(idx, 1)[0];
+      chosenCategories.push(chosenCategory);
+    }
+  }
+
+  return chosenCategories.reduce((chosenJokes: Array<JokeWithIdx>, cat: Category) => {
+    const idx = randomNumTill(obj[cat].length);
+    const joke = obj[cat][idx];
+    chosenJokes.push({ idx, joke });
+    return chosenJokes;
+  }, []);
 };

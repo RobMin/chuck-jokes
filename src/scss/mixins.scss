@@ -59,10 +59,10 @@
     position: absolute;
     top: -15px;
     @if $arrow-position == "right" {
-      right: 30px;
+      right: 20px;
     }
     @else {
-      left: 30px;
+      left: 20px;
     }
 
     width: 0;

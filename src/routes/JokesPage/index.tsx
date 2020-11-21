@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import CategoryTag from 'components/Category/Tag';
 import { Category } from 'components/Category/index.d';
 import useChuckApi from 'hooks/useChuckApi';
 import CategoriesSection from './CategoriesSection';
-import { addToCategories, getRandomKey } from './helpers';
+import { addToCategories, getRandomJokePerRandomCategory, getRandomKey, JokeWithIdx } from './helpers';
 import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
 import JokesSection from './JokesSection';
 import { knownCategories } from '../../constants';
 import arrowRight from 'assets/icons/tailed_arrow_right.svg';
-import './styles.scss';
 import Button from 'components/Button';
+import './styles.scss';
 
 export interface Joke {
   icon_url: string;
@@ -30,7 +30,7 @@ const knownCategoriesArr = Object.keys(knownCategories) as Array<Category>;
 const JokesPage = () => {
   const [ activeIdx, setActiveIdx ] = useState(-1);
   const [ categorizedJokes, setCategorizedJokes ] = useState<CategorizedJokes>({});
-  const [ availableCategories, setAvailableCategories ] = useState(knownCategoriesArr);
+  const [ availableCategories, setAvailableCategories ] = useState(knownCategoriesArr); // To prevent categories list rerenders
   const [ activeCategory, setActiveCategory ] = useState<Category>(getRandomKey(knownCategories) as Category);
   const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState<string>();
@@ -63,14 +63,24 @@ const JokesPage = () => {
     }
   }, [ setActiveCategory, activeCategory, categorizedJokes ]);
 
+  const jokesWithIdx = useMemo(() =>
+    getRandomJokePerRandomCategory(categorizedJokes)
+  , [ categorizedJokes ]);
+
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
   const active = activeIdx === -1 ? null : jokes[activeIdx];
-  const announceNeeded = error || loading || !jokes.length;
+  const announceNeeded = error || !jokes.length;
   return (<>
-    <SearchSection query={ query } setQuery={ setQuery } />
+    <SearchSection
+      query={ query }
+      setQuery={ setQuery }
+      jokesWithIdx={ jokesWithIdx }
+      selectJoke={ ({ idx, joke }: JokeWithIdx) => { setActiveIdx(idx); setActiveCategory(joke.categories[0]); } }
+      loading={ loading }
+    />
     { announceNeeded &&
       <div className="JokesPage-announce-wrapper">
-        <Announce loading={ loading } jokesCount={ jokes.length } query={ query } />
+        <Announce jokesCount={ jokes.length } query={ query } />
       </div>
     }
     { !announceNeeded && active &&
@@ -94,14 +104,8 @@ const JokesPage = () => {
   </>);
 };
 
-const Announce = ({ query, loading, jokesCount }: any) => {
-  if (loading) {
-    return (
-      <span className="JokesPage-loading">
-        Loading...
-      </span>
-    );
-  } else if (!jokesCount) {
+const Announce = ({ query, jokesCount }: any) => {
+  if (!jokesCount) {
     return (
       <span className="JokesPage-no-jokes">
         No Chuck Norris jokes were found for your search.<br/>
@@ -115,7 +119,7 @@ const Announce = ({ query, loading, jokesCount }: any) => {
 
   return (
     <span className="JokesPage-error">
-      { (query.length < 100 || query.length > 300)
+      { (query.length < 3 || query.length > 300)
         ? <>
             Searches not between 3 and 300 characters are out of Chuck's guidance.
           </>

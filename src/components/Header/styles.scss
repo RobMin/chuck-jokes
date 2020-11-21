@@ -81,9 +81,10 @@
     }
 
     &-item {
-      @include font(14px, normal, $text-grey, 1.43);
+      @include font(14px, normal, $text-light, 1.43);
       @include underline(8px);
       text-align: start;
+      display: block;
       width: 100%;
       padding: 10px 16px;
 
