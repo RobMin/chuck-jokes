@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  &-body {
+    flex: 1;
+  }
+}

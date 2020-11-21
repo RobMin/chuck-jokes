@@ -13,10 +13,10 @@ const useChuckApi = () => {
     axios.get(`${ apiUrl }/categories`).then(res => res.data)
   , []);
 
-  const searchJokes = useCallback(async (search: string = 'all') =>
+  const searchJokes = useCallback(async (search: string) =>
     axios.get(`${ apiUrl }/search`, {
       params: {
-        query: search.length < 3 ? 'all' : search
+        query: (!search || search.length === 0) ? 'all' : search
       }
     }).then(res => res.data as JokesResData)
   , []);

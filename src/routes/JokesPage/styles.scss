@@ -10,4 +10,47 @@
       padding: 0 $mobile-borders;
     }
   }
+
+  &-announce-wrapper {
+    @extend %flex-center;
+    justify-content: center;
+    margin: 50px auto;
+    @media #{ $desktop-down } {
+      padding: 0 $mobile-borders;
+    }
+  }
+
+  &-loading {
+    @include font(28px, 600, $primary);
+    animation: ease-in-out 2s infinite alternate scaling;
+    @media #{ $desktop-down } {
+      font-size: 22px;
+    }
+  }
+
+  &-no-jokes {
+    @include font(22px, 600, $primary, 1.5);
+    @media #{ $desktop-down } {
+      @include font(16px, normal);
+    }
+  }
+  &-add-joke-button {
+    margin-top: 20px;
+  }
+
+  &-error {
+    @include font(22px, 600, $text, 1.5);
+    @media #{ $desktop-down } {
+      @include font(16px, normal);
+    }
+  }
+}
+
+@keyframes scaling {
+  from {
+    transform: scale(1.0);
+  }
+  to {
+    transform: scale(1.3);
+  }
 }

@@ -6,9 +6,11 @@ import CategoriesSection from './CategoriesSection';
 import { addToCategories, getRandomKey } from './helpers';
 import SearchSection from './SearchSection';
 import SingleJokeSection from './SingleJokeSection';
-import './styles.scss';
 import JokesSection from './JokesSection';
 import { knownCategories } from '../../constants';
+import arrowRight from 'assets/icons/tailed_arrow_right.svg';
+import './styles.scss';
+import Button from 'components/Button';
 
 export interface Joke {
   icon_url: string;
@@ -30,6 +32,7 @@ const JokesPage = () => {
   const [ categorizedJokes, setCategorizedJokes ] = useState<CategorizedJokes>({});
   const [ availableCategories, setAvailableCategories ] = useState(knownCategoriesArr);
   const [ activeCategory, setActiveCategory ] = useState<Category>(getRandomKey(knownCategories) as Category);
+  const [ loading, setLoading ] = useState(true);
   const [ error, setError ] = useState<string>();
 
   const { searchJokes } = useChuckApi();
@@ -45,9 +48,11 @@ const JokesPage = () => {
       } catch(e) {
         setError(e.message);
       }
+      setLoading(false);
     };
 
     getJokes();
+    setLoading(true);
   }, [ setError, searchJokes, setCategorizedJokes, setActiveIdx, query ]);
 
   // Gets sure that if there are any jokes available, 'activeCategory' is not empty
@@ -60,9 +65,15 @@ const JokesPage = () => {
 
   const jokes = (categorizedJokes[activeCategory] || []) as Array<Joke>;
   const active = activeIdx === -1 ? null : jokes[activeIdx];
+  const announceNeeded = error || loading || !jokes.length;
   return (<>
     <SearchSection query={ query } setQuery={ setQuery } />
-    { active &&
+    { announceNeeded &&
+      <div className="JokesPage-announce-wrapper">
+        <Announce loading={ loading } jokesCount={ jokes.length } query={ query } />
+      </div>
+    }
+    { !announceNeeded && active &&
       <SingleJokeSection
         nextJoke={ activeIdx === jokes.length - 1 ? null : () => setActiveIdx(activeIdx + 1) }
         prevJoke={ activeIdx === 0 ? null : () => setActiveIdx(activeIdx - 1) }
@@ -70,7 +81,7 @@ const JokesPage = () => {
         joke={ active }
       />
     }
-    { !active && !!jokes.length && <>
+    { !announceNeeded && !active && <>
       <CategoriesSection
         categories={ availableCategories }
         onCategoryChange={ (cat: Category) => setActiveCategory(cat) }
@@ -81,6 +92,40 @@ const JokesPage = () => {
       <JokesSection jokes={ jokes } setActiveIdx={ setActiveIdx } />
     </> }
   </>);
+};
+
+const Announce = ({ query, loading, jokesCount }: any) => {
+  if (loading) {
+    return (
+      <span className="JokesPage-loading">
+        Loading...
+      </span>
+    );
+  } else if (!jokesCount) {
+    return (
+      <span className="JokesPage-no-jokes">
+        No Chuck Norris jokes were found for your search.<br/>
+        It's your chance to add one!
+        <Button iconPosition="right" icon={ arrowRight } backgroundColor="transparent" customClasses="JokesPage-add-joke-button">
+          Submit joke
+        </Button>
+      </span>
+    );
+  }
+
+  return (
+    <span className="JokesPage-error">
+      { (query.length < 100 || query.length > 300)
+        ? <>
+            Searches not between 3 and 300 characters are out of Chuck's guidance.
+          </>
+        : <>
+            There was an error while getting Jokes.<br/>
+            We hope Chuck won't get angry.
+          </>
+      }
+    </span>
+  );
 };
 
 export default JokesPage;
