@@ -1,0 +1,61 @@
+@import "scss/all.scss";
+
+%headerButton {
+  @include font(14px, 600, $white);
+  padding-left: 20px;
+  padding-right: 20px;
+  letter-spacing: .75px;
+}
+
+.DesktopButtons {
+  &-wrapper {
+    @extend %flex-stretch;
+    @media #{ $desktop-down } {
+      display: none;
+    }
+  }
+
+  &-button {
+    @extend %headerButton;
+  }
+
+  &-dropdown {
+    &-button {
+      @extend %headerButton;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: $secondary;
+      cursor: pointer;
+    }
+
+    &-human {
+      height: 16px;
+      margin-right: 15px;
+    }
+
+    &-arrow {
+      height: 8px;
+      margin-left: 40px;
+    }
+
+    &-wrapper {
+      @include dropdown($white, 7px, 0 -1px 3px 0 $shadow);
+    }
+
+    &-item {
+      @include font(14px, normal, $text-light, 1.43);
+      @include underline(8px);
+      text-align: start;
+      display: block;
+      width: 100%;
+      padding: 10px 16px;
+      text-decoration: none;
+
+      &.special {
+        color: $secondary;
+        font-weight: 600;
+      }
+    }
+  }
+}

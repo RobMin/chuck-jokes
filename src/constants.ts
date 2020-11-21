@@ -1,3 +1,6 @@
+// TODO: find a way to get this from scss file
+export const desktopBreakpoint = 1150;
+
 export const knownCategories = {
   animal: 'Animal joke',
   career: 'Career joke',
