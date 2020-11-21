@@ -20,10 +20,10 @@ const CategoriesSection = ({ categories, onCategoryChange }: CategoriesSectionPr
   return (
     <div className="CategoriesSection">
       { categories.slice(0, showAll ? Infinity : 7).map((cat, i) => (
-        <CategoryButton key={ i } onClick={ () => onCategoryChange(cat) } category={ cat as Category } />
+        <CategoryButton key={ i } onClick={ () => onCategoryChange(cat) } category={ cat as Category } customClasses="m-auto" />
       )) }
       { categories.length > 7 && !showAll && (
-        <Button type="big" iconPosition="right" icon={ arrowDown } onClick={ () => setShowAll(true) }>
+        <Button type="big" iconPosition="right" icon={ arrowDown } onClick={ () => setShowAll(true) } customClasses="m-auto">
           View all
         </Button>
       ) }

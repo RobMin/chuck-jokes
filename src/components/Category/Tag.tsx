@@ -5,12 +5,13 @@ import './styles.scss';
 
 interface CategoryTagProps {
   category: Category;
-  withDot?: true
+  withDot?: true;
+  customClasses?: string;
 }
 
-const CategoryTag = ({ category, withDot }: CategoryTagProps) => {
+const CategoryTag = ({ category, withDot, customClasses }: CategoryTagProps) => {
   return (
-    <span className={ `Category-tag Category-${ category }` }>
+    <span className={ `Category-tag Category-${ category } ${ customClasses || '' }` }>
       { withDot && <span className="Category-tag-dot" /> }
       { knownCategories[category] }s
     </span>

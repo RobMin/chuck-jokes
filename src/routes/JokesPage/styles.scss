@@ -9,7 +9,7 @@
     margin: 0 auto 16px;
     @media #{ $desktop-down } {
       width: 100%;
-      margin: 0 30px 16px;
+      padding: 0 $mobile-borders;
     }
   }
 }

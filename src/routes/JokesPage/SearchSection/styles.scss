@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 20px;
+  padding: $mobile-borders;
   @media #{ $desktop-down } {
     height: 240px;
   }
@@ -60,13 +60,11 @@
     &-wrapper {
       @include flex-stretch;
       margin: 45px 0;
-      width: 458px;
+      max-width: 458px;
+      width: 100%;
       height: 48px;
       border: 1px solid white;
       border-radius: 4px;
-      @media #{ $desktop-down } {
-        width: 100%;
-      }
     }
 
     &-icon {

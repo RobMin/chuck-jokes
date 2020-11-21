@@ -9,27 +9,15 @@
   margin: 60px auto 40px;
   width: $desktop;
   @media #{ $desktop-down } {
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
-    margin: 30px 30px 20px;
+    margin: 40px auto 25px;
+    padding: 0 $mobile-borders;
   }
-
-  &-show-all-button {
-    @include flex-center;
-    justify-content: space-around;
-    padding: 14px;
-    width: 100%;
-    max-width: 206px;
-    border-radius: 2px;
-    border: solid 1px $secondary;
-
-    &-text {
-      @include font(14px, 600);
-      color: $secondary;
-      text-transform: uppercase;
-    }
-
-    &-arrow, &-placeholder {
-      width: 11px;
-    }
+  @media (max-width: calc(#{ $big-button-max-width } * 4)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: calc(#{ $big-button-max-width } * 3)) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

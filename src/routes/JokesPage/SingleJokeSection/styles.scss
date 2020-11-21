@@ -7,7 +7,7 @@
   margin: 0 auto;
   @media #{ $desktop-down } {
     width: 100%;
-    padding: 20px;
+    padding: $mobile-borders;
     margin: 0;
   }
 
@@ -21,6 +21,9 @@
     height: 62px;
     cursor: pointer;
     margin: 46px 0 48px;
+    @media #{ $desktop-down } {
+      margin: 26px 0 28px;
+    }
   }
 
   &-content-wrapper {
@@ -44,6 +47,11 @@
       justify-content: space-between;
       align-items: flex-end;
       margin-top: 30px;
+      @media #{ $xs-down } {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
     }
   }
 

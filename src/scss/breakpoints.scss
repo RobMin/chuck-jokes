@@ -1,5 +1,10 @@
-$mobile: 320px;
-$desktop: 1110px;
+@import 'scss/constants.scss';
 
-$desktop-up: "(min-width: #{ $desktop })";
-$desktop-down: "(max-width: #{ $desktop })";
+$xs: 575px;
+$xs-up: "(min-width: #{ $xs })";
+$xs-down: "(max-width: #{ $xs })";
+
+$desktop: 1110px;
+$desktop-with-borders: calc(#{ $desktop } + #{ $mobile-borders } * 2);
+$desktop-up: "(min-width: #{ $desktop-with-borders })";
+$desktop-down: "(max-width: #{ $desktop-with-borders })";

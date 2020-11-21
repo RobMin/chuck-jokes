@@ -10,9 +10,10 @@ interface ButtonProps {
   children: string;
   type?: 'regular' | 'big';
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  customClasses?: string;
 }
 
-const Button = ({ icon, iconPosition, border, backgroundColor, color, children, onClick, type }: ButtonProps) => {
+const Button = ({ icon, iconPosition, border, backgroundColor, color, children, onClick, type, customClasses }: ButtonProps) => {
   const style: any = {};
   if (border) style.border = border;
   if (backgroundColor) style.backgroundColor = backgroundColor;
@@ -22,7 +23,7 @@ const Button = ({ icon, iconPosition, border, backgroundColor, color, children, 
   const iconImg = <img src={ icon } alt="button icon" className={ `${ prefix }Button-icon` } />;
   const iconPlaceholder = <span className="BigButton-icon" />;
   return (
-     <button className={ `${ prefix }Button` } onClick={ onClick } style={ style }>
+     <button className={ `${ prefix }Button ${ customClasses || '' }` } onClick={ onClick } style={ style }>
       { iconPosition === 'left' ? iconImg : (type === 'big' && iconPlaceholder) }
       <span>{ children }</span>
       { iconPosition === 'right' ? iconImg : (type === 'big' && iconPlaceholder) }

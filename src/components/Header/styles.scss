@@ -17,7 +17,7 @@
     height: 60px;
     background-color: $primary;
     @media #{ $desktop-down } {
-      padding: 0 20px;
+      padding: 0 $mobile-borders;
       height: 50px;
     }
   }

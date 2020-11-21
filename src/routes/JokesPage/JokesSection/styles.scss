@@ -7,7 +7,8 @@
   width: $desktop;
   @media #{ $desktop-down } {
     width: 100%;
-    margin: 30px 30px 20px;
+    margin: 50px auto 40px;
+    padding: 0 $mobile-borders;
   }
 
   &-grid {
@@ -15,6 +16,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 38px 15px;
     margin-bottom: 64px;
+    @media #{ $desktop-down } {
+      grid-template-columns: 1fr;
+    }
   }
 
   &-more-button-wrapper {

@@ -10,6 +10,11 @@
   &-head {
     @include flex-center;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    &-tag {
+      margin-bottom: 5px;
+    }
   }
 
   &-title {

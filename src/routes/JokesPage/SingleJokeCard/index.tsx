@@ -15,7 +15,7 @@ const SingleJokeCard = ({ joke }: SingleJokeSectionProps) => {
     <div className="SingleJokeCard">
       <div className="SingleJokeCard-head">
         { joke.categories && joke.categories.map((cat, i) => (
-          <CategoryTag key={ i } withDot category={ cat as Category } />
+          <CategoryTag key={ i } withDot category={ cat as Category } customClasses="SingleJokeCard-head-tag" />
         )) }
         <RatingTag likes={ joke.likes } dislikes={ joke.dislikes } />
       </div>
