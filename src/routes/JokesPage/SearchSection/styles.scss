@@ -2,9 +2,7 @@
 
 .SearchSection {
   @extend %background-image;
-  @extend %flex-center;
-  justify-content: center;
-  flex-direction: column;
+  @include flex(center, center, column);
   width: 100%;
   height: 320px;
   padding: $mobile-borders;
@@ -48,7 +46,7 @@
     }
 
     &-wrapper {
-      @extend %flex-stretch;
+      @include flex(stretch, normal);
       position: relative;
       margin: 45px 0;
       max-width: 458px;
@@ -58,10 +56,6 @@
       border-radius: 4px;
     }
 
-    &-loading-icon {
-      // height: 80%;
-      // width: 80%;
-    }
     &-icon {
       &-wrapper {
         padding: 10px;
@@ -79,7 +73,7 @@
       }
 
       &-item {
-        @extend %flex-center;
+        @include flex(center, normal);
         @include underline(16px);
         width: 100%;
         height: 50px;

@@ -17,7 +17,7 @@
     cursor: pointer;
 
     &-wrapper {
-      @extend %flex-center;
+      @include flex(center, normal);
       @media #{ $desktop-up } {
         display: none;
       }
@@ -66,8 +66,8 @@
 
   &-group {
     &-title {
-      @extend %flex-center;
       @extend %mobileHeaderButton;
+      @include flex(center, normal);
       margin-top: 30px;
       img {
         margin-right: 20px;

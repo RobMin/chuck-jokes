@@ -10,11 +10,11 @@
   }
 
   &-back-button {
-    @extend %flex-center;
-    justify-content: center;
+    @include flex(center, center);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    border-radius: 100px;
     width: 62px;
     height: 62px;
     cursor: pointer;
@@ -41,9 +41,7 @@
     }
 
     &-buttons-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      @include flex(flex-end, space-between);
       margin-top: 30px;
       @media #{ $xs-down } {
         flex-direction: column;

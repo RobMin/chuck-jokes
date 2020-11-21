@@ -53,6 +53,7 @@
   background-color: $bg;
   border-radius: $radius;
   box-shadow: $box-shadow;
+  overflow: hidden;
 
   &:before {
     content: "";
@@ -69,5 +70,32 @@
     height: 0;
     border: 8px solid transparent;
     border-bottom: 7px solid $bg;
+  }
+}
+
+@mixin flex($align-items, $justify, $direction: false, $wrap: false) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify;
+  @if $direction {
+    flex-direction: $direction;
+  }
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+}
+
+@mixin bg-hoverable-darken($bg) {
+  background-color: $bg;
+  transition: background-color ease-in-out 300ms;
+  &:hover {
+    background-color: darken($bg, 2.5%);
+  }
+}
+
+@mixin box-shadow-hover($box-shadow: 0 1px 7px 0 $shadow) {
+  transition: box-shadow ease-out 300ms;
+  &:hover {
+    box-shadow: $box-shadow;
   }
 }

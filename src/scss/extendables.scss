@@ -13,17 +13,6 @@
   padding: 18px;
 }
 
-%flex-stretch {
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-}
-
-%flex-center {
-  display: flex;
-  align-items: center;
-}
-
 %ellipsis {
   overflow: hidden;
   white-space: nowrap;

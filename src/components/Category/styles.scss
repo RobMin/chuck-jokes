@@ -15,13 +15,13 @@
   }
 
   &-button {
-    @extend %flex-center;
-    justify-content: center;
+    @include flex(center, center);
     padding: 14px;
     width: 100%;
     max-width: $big-button-max-width;
     border-width: 1px;
     border-style: solid;
+    @include box-shadow-hover;
 
     &-text {
       @include font(14px, 600);

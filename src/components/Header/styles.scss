@@ -11,7 +11,7 @@
     }
   }
 
-  @extend %flex-center;
+  @include flex(center, normal);
   height: 100%;
   width: $desktop;
   margin-left: auto;

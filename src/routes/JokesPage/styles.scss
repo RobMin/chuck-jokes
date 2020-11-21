@@ -12,8 +12,7 @@
   }
 
   &-announce-wrapper {
-    @extend %flex-center;
-    justify-content: center;
+    @include flex(center, center);
     margin: 50px auto;
     @media #{ $desktop-down } {
       padding: 0 $mobile-borders;

@@ -9,7 +9,8 @@
 
 .DesktopButtons {
   &-wrapper {
-    @extend %flex-stretch;
+    @include flex(stretch, normal);
+    height: 100%;
     @media #{ $desktop-down } {
       display: none;
     }
@@ -17,15 +18,15 @@
 
   &-button {
     @extend %headerButton;
+    @include bg-hoverable-darken($primary);
   }
 
   &-dropdown {
     &-button {
       @extend %headerButton;
+      @include flex(center, normal);
       position: relative;
-      display: flex;
-      align-items: center;
-      background-color: $secondary;
+      @include bg-hoverable-darken($secondary);
       cursor: pointer;
     }
 
@@ -44,6 +45,7 @@
     }
 
     &-item {
+      @include bg-hoverable-darken($white);
       @include font(14px, normal, $text-light, 1.43);
       @include underline(8px);
       text-align: start;

@@ -6,9 +6,7 @@
   overflow: auto;
 
   &-head {
-    @extend %flex-center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    @include flex(center, space-between, row, wrap);
 
     &-tag {
       margin-bottom: 5px;

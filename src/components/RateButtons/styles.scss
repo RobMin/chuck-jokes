@@ -5,8 +5,7 @@
 }
 
 .RateButton {
-  @extend %flex-center;
-  flex-direction: column;
+  @include flex(center, normal, column);
   margin: 0 16px;
 
   &-count {
@@ -15,8 +14,7 @@
   }
 
   &-icon-wrapper {
-    @extend %flex-center;
-    justify-content: center;
+    @include flex(center, center);
     width: 40px;
     height: 40px;
     border-radius: 40px;

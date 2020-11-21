@@ -1,21 +1,17 @@
 @import "scss/all.scss";
 
 .JokeCard {
-  display: flex;
-  flex-direction: column;
+  @include flex(normal, normal, column);
   min-height: 264px;
   padding: 16px;
   border-radius: 2px;
   border: solid 1px $dark-white;
   background-color: $white;
   word-break: break-word;
-  transition: 300ms;
-  &:hover {
-    box-shadow: 0 1px 7px 0 $shadow;
-  }
+  @include box-shadow-hover;
 
   &-head {
-    @extend %flex-center;
+    @include flex(center, normal);
   }
 
   &-title {
@@ -30,7 +26,6 @@
   }
 
   &-buttons {
-    display: flex;
-    justify-content: flex-end;
+    @include flex(normal, flex-end);
   }
 }

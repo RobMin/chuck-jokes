@@ -59,8 +59,8 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
         />
         <span className="SearchSection-search-icon-wrapper">
           { (loading || localLoading)
-            ? <img alt="loading" src={ whiteLoading } className="SearchSection-search-loading-icon"/>
-            : <img alt="search icon" src={ searchIcon } className="SearchSection-search-icon"/>
+            ? <img alt="loading" src={ whiteLoading } />
+            : <img alt="search icon" src={ searchIcon } className="SearchSection-search-icon" />
           }
         </span>
         { !!jokesWithIdx.length && (

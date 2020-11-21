@@ -20,8 +20,7 @@
   }
 
   &-more-button-wrapper {
-    @extend %flex-center;
-    justify-content: center;
+    @include flex(center, center);
     width: 100%;
   }
 }

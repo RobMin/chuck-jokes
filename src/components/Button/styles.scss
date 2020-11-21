@@ -1,7 +1,7 @@
 @import "scss/all.scss";
 
 .Button, .BigButton {
-  @extend %flex-center;
+  @include flex(center, normal);
   @include font(14px, 600, $secondary);
   text-transform: uppercase;
   background-color: $white;
@@ -25,6 +25,7 @@
   width: 100%;
   border-radius: 2px;
   border: solid 1px $secondary;
+  @include box-shadow-hover;
 
   &-icon {
     width: 11px;

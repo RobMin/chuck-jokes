@@ -1,7 +1,7 @@
+@import 'scss/all.scss';
+
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex(normal, space-between, column);
   height: 100%;
 
   &-body {
