@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import arrowDown from 'assets/icons/arrow_down.svg';
 import human from 'assets/icons/human.svg';
 import useFade from 'hooks/useFade';
@@ -9,11 +9,7 @@ import './styles.scss';
 const DesktopButtons = () => {
   const dropdownButtonRef = useRef(null);
   const [ show, setShow ] = useState(false);
-  const closeDropdown = useCallback(
-    () => setShow(false),
-    [ setShow ],
-  );
-  useOutClick(dropdownButtonRef, closeDropdown);
+  useOutClick(dropdownButtonRef, () => setShow(false));
 
   const fadeClasses = useFade(show);
   return (
