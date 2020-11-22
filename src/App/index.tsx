@@ -12,8 +12,8 @@ const App = () => {
       <div className="App-body">
         <Router>
           <Switch>
-            <Route path="/jokes/:id?" component={ JokesPage } />
-            <Redirect to="/jokes" />
+            <Route exact path="/chuck-jokes" component={ JokesPage } />
+            <Redirect to="/chuck-jokes" />
           </Switch>
         </Router>
       </div>

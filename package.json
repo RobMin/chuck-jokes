@@ -2,7 +2,7 @@
   "name": "chuck-jokes",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://robmin.github.io/jokes",
+  "homepage": "https://robmin.github.io/chuck-jokes",
   "dependencies": {
     "axios": "^0.21.0",
     "react": "^17.0.1",
