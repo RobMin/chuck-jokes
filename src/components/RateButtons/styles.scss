@@ -19,22 +19,31 @@
     height: 40px;
     border-radius: 40px;
     padding-bottom: 2px;
+    transition: background-color ease-out 300ms;
   }
 
-  &-like {
+  &.like {
     $like: #68b680;
     color: $like;
+
     .RateButton-icon-wrapper {
       background-color: $like;
+      &:hover {
+        background-color: #46915d;
+      }
     }
   }
 
-  &-dislike {
+  &.dislike {
     $dislike: #ff3750;
     color: $dislike;
+
     .RateButton-icon-wrapper {
       background-color: $dislike;
       transform: rotate(-180deg);
+      &:hover {
+        background-color: #ce2c40;
+      }
     }
   }
 }

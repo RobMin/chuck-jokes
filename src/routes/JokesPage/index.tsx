@@ -87,6 +87,7 @@ const JokesPage = () => {
       <SingleJokeSection
         nextJoke={ activeIdx === jokes.length - 1 ? null : () => setActiveIdx(activeIdx + 1) }
         prevJoke={ activeIdx === 0 ? null : () => setActiveIdx(activeIdx - 1) }
+        rateJoke={ () => { /* TODO: add rate logic */ } }
         exitSingleJokeSection={ () => setActiveIdx(-1) }
         joke={ active }
       />
