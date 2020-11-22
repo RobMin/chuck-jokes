@@ -33,7 +33,7 @@ const JokesPage = () => {
   const [ availableCategories, setAvailableCategories ] = useState(knownCategoriesArr); // To prevent categories list rerenders
   const [ activeCategory, setActiveCategory ] = useState<Category>(getRandomKey(knownCategories) as Category);
   const [ loading, setLoading ] = useState(true);
-  const [ error, setError ] = useState<string>();
+  const [ error, setError ] = useState<string | null>(null);
 
   const { searchJokes } = useChuckApi();
   const [ query, setQuery ] = useState<string>('');
@@ -45,7 +45,11 @@ const JokesPage = () => {
         setCategorizedJokes(categorizedJokes);
         setAvailableCategories(Object.keys(categorizedJokes) as Array<Category>);
         setActiveIdx(total === 1 ? 0 : -1);
+        setError(null);
       } catch(e) {
+        setCategorizedJokes({});
+        setAvailableCategories([]);
+        setActiveIdx(-1);
         setError(e.message);
       }
       setLoading(false);
@@ -80,7 +84,7 @@ const JokesPage = () => {
     />
     { announceNeeded &&
       <div className="JokesPage-announce-wrapper">
-        <Announce jokesCount={ jokes.length } query={ query } loading={ loading } />
+        <Announce error={ error } query={ query } loading={ loading } />
       </div>
     }
     { !announceNeeded && active &&
@@ -105,36 +109,36 @@ const JokesPage = () => {
   </>);
 };
 
-const Announce = ({ query, jokesCount, loading }: any) => {
+const Announce = ({ query, error, loading }: any) => {
   if (loading) {
     return (
       <span className="JokesPage-loading">
         Loading...
       </span>
     );
-  } else if (!jokesCount) {
+  } else if (error) {
     return (
-      <span className="JokesPage-no-jokes">
-        No Chuck Norris jokes were found for your search.<br/>
-        It's your chance to add one!
-        <Button iconPosition="right" icon={ arrowRight } backgroundColor="transparent" customClasses="JokesPage-add-joke-button">
-          Submit joke
-        </Button>
+      <span className="JokesPage-error">
+        { (query.length < 3 || query.length > 300)
+          ? <>
+              Searches not between 3 and 300 characters are out of Chuck's guidance.
+            </>
+          : <>
+              There was an error while getting Jokes.<br/>
+              We hope Chuck won't get angry.
+            </>
+        }
       </span>
     );
   }
 
   return (
-    <span className="JokesPage-error">
-      { (query.length < 3 || query.length > 300)
-        ? <>
-            Searches not between 3 and 300 characters are out of Chuck's guidance.
-          </>
-        : <>
-            There was an error while getting Jokes.<br/>
-            We hope Chuck won't get angry.
-          </>
-      }
+    <span className="JokesPage-no-jokes">
+      No Chuck Norris jokes were found for your search.<br/>
+      It's your chance to add one!
+      <Button iconPosition="right" icon={ arrowRight } backgroundColor="transparent" customClasses="JokesPage-add-joke-button">
+        Submit joke
+      </Button>
     </span>
   );
 };

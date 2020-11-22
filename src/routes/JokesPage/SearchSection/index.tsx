@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import backgroundImage from 'assets/search_section_image.jpg';
-import searchIcon from 'assets/icons/search_icon.svg';
+import whiteSearchIcon from 'assets/icons/white_search_icon.svg';
 import whiteLoading from 'assets/icons/white_loading.svg';
+import blackSearchIcon from 'assets/icons/black_search_icon.svg';
+import blackLoading from 'assets/icons/black_loading.svg';
 import { JokeWithIdx } from '../helpers';
 import CategoryBolt from 'components/Category/Bolt';
 import { knownCategories } from '../../../constants';
@@ -47,7 +49,7 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">
       <h4 className="SearchSection-title">The Joke Bible</h4>
       <h6 className="SearchSection-subtitle">Daily Laughs for you and yours</h6>
-      <div className="SearchSection-search-wrapper">
+      <div className={ `SearchSection-search-wrapper ${ input.length ? 'active' : '' }` }>
         <input
           onFocus={ () => setShow(true) }
           onBlur={ () => setShow(false) }
@@ -59,8 +61,8 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
         />
         <span className="SearchSection-search-icon-wrapper">
           { (loading || localLoading)
-            ? <img alt="loading" src={ whiteLoading } />
-            : <img alt="search icon" src={ searchIcon } className="SearchSection-search-icon" />
+            ? <img alt="loading" src={ input.length ? blackLoading : whiteLoading } />
+            : <img alt="search icon" src={ input.length ? blackSearchIcon : whiteSearchIcon } className="SearchSection-search-icon" />
           }
         </span>
         { !!jokesWithIdx.length && (
