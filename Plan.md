@@ -18,4 +18,4 @@
 + Implement search dropdown
 + Add open/close animations for dropdowns
 + Read the task description once more
-- Upload to GH pages
++ Upload to GH pages
