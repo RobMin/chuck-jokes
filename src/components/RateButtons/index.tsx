@@ -19,7 +19,7 @@ const RateButton = ({ type, count, onClick }: RateButtonProps) => {
   return (
     <span className={ `RateButton ${ type }` }>
       <button className="RateButton-icon-wrapper" onClick={ () => onClick(type) }>
-        <img src={ likeImg } className="RateButton-icon" />
+        <img src={ likeImg } alt="rate img" className="RateButton-icon" />
       </button>
       <span className="RateButton-count">{ count }</span>
     </span>

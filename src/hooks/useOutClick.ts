@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 const useOutClick = (ref: any, onClick: (e: any) => void) => {
   useEffect(() => {
