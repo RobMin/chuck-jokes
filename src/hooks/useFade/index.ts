@@ -14,7 +14,7 @@ const useFade = (show: boolean) => {
   if (show) {
     return 'UseFade-reveal';
   } else if (!show && !localShow) {
-    return 'UseFade-hiden';
+    return 'UseFade-hidden';
   }
 
   return 'UseFade-hide';

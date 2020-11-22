@@ -17,5 +17,5 @@
 + Implement footer
 + Implement search dropdown
 + Add open/close animations for dropdowns
-- Read the task description once more
++ Read the task description once more
 - Upload to GH pages
