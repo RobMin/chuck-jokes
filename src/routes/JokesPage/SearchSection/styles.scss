@@ -31,7 +31,7 @@
     @include font(16px, normal, $primary);
     border: none;
     outline: none;
-    width: calc(100% - 48px);
+    flex-grow: 1;
     padding-left: 15px;
     padding-right: 15px;
     background-color: transparent;
@@ -63,12 +63,14 @@
     }
 
     &-icon {
+      width: 24px;
+      height: 24px;
       &-wrapper {
         padding: 10px;
+        height: 100%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        flex-grow: 1;
       }
     }
 

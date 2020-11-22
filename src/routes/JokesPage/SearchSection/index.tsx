@@ -9,6 +9,7 @@ import CategoryBolt from 'components/Category/Bolt';
 import { knownCategories } from '../../../constants';
 import useFade from 'hooks/useFade';
 import './styles.scss';
+import useIsDesktop from 'hooks/useIsDesktop';
 
 interface SearchSectionProps {
   setQuery: (query: string) => void;
@@ -44,6 +45,7 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
     setShow(false);
   };
 
+  const isDesktop = useIsDesktop();
   const fadeClasses = useFade(show);
   return (
     <section style={{ backgroundImage: `url(${ backgroundImage })` }} className="SearchSection">
@@ -55,7 +57,7 @@ const SearchSection = ({ setQuery, query, jokesWithIdx, selectJoke, loading }: S
           onBlur={ () => setShow(false) }
           type="text"
           className="SearchSection-search"
-          placeholder="How can we make you laugh today?"
+          placeholder={ isDesktop ? 'How can we make you laugh today?' : 'Find your perfect Chuck joke' }
           value={ input }
           onChange={ (e) => e.target.value.length < 300 && setInput(e.target.value) }
         />
