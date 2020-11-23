@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from 'react';
-import { desktopBreakpoint } from '../constants';
+import { desktopBreakpoint } from 'scss/shared';
 
 const useIsDesktop = () => {
   const [ pageWidth, setPageWidth ] = useState(0);
